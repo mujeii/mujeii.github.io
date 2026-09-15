@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Meili Bai — Silent Engine</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Special+Elite&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+
+body {
+
+    background: #050505;
+
+    color: #e8e5df;
+
+    overflow: hidden;
+
+    position: relative;
+}
+
+
+/* =========================
+   GRAIN
+========================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 100;
+
+    opacity: .08;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+
+/* =========================
+   VIGNETTE
+========================= */
+
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 99;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0,0,0,.8) 100%
+        );
+}
+
+
+/* =========================
+   BACKGROUND COLLAGE
+========================= */
+
+.background-word {
+
+    position: absolute;
+
+    left: -4%;
+
+    bottom: -10%;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 31vw;
+
+    line-height: .7;
+
+    color: #0d0d0d;
+
+    transform: rotate(-8deg);
+
+    user-select: none;
+
+    pointer-events: none;
+}
+
+
+.scratch {
+
+    position: absolute;
+
+    border: 1px solid rgba(255,255,255,.045);
+
+    pointer-events: none;
+}
+
+
+.scratch.one {
+
+    width: 600px;
+
+    height: 220px;
+
+    right: -100px;
+
+    top: 13%;
+
+    transform: rotate(-9deg);
+}
+
+
+.scratch.two {
+
+    width: 700px;
+
+    height: 120px;
+
+    left: -180px;
+
+    bottom: 12%;
+
+    transform: rotate(7deg);
+}
+
+
+.scratch.three {
+
+    width: 1px;
+
+    height: 130%;
+
+    left: 50%;
+
+    top: -15%;
+
+    background: rgba(255,255,255,.04);
+
+    transform: rotate(21deg);
+
+    border: none;
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+nav {
+
+    position: absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    padding: 25px 4%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    z-index: 50;
+}
+
+
+.logo {
+
+    text-decoration: none;
+
+    color: #eee;
+
+    font-family:
+        "Special Elite",
+        monospace;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+}
+
+
+.logo small {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #555;
+
+    font-size: 7px;
+
+    letter-spacing: 4px;
+}
+
+
+.nav {
+
+    display: flex;
+
+    gap: 38px;
+}
+
+
+.nav a {
+
+    text-decoration: none;
+
+    color: #666;
+
+    font-family:
+        "Special Elite",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+    transition: .3s;
+}
+
+
+.nav a:hover {
+
+    color: #a00000;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 10;
+}
+
+
+/* =========================
+   TOP LABEL
+========================= */
+
+.top-label {
+
+    position: absolute;
+
+    top: 25%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-family:
+        "Special Elite",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 7px;
+
+    color: #666;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title {
+
+    position: absolute;
+
+    top: 30%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    text-align: center;
+
+    width: 100%;
+}
+
+
+.title h1 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(90px, 13vw, 190px);
+
+    line-height: .72;
+
+    letter-spacing: -8px;
+
+    color: #eee;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 #181818;
+}
+
+
+.title h1 span {
+
+    display: block;
+
+    margin-left: 80px;
+}
+
+
+/* =========================
+   CHINESE
+========================= */
+
+.chinese {
+
+    display: inline-block;
+
+    margin-top: 35px;
+
+    padding: 7px 28px 10px;
+
+    background: #ddd;
+
+    color: #111;
+
+    font-family:
+        "Noto Serif SC",
+        "Songti SC",
+        serif;
+
+    font-size: 25px;
+
+    letter-spacing: 11px;
+
+    transform: rotate(-2deg);
+
+    box-shadow:
+        7px 7px 0 rgba(255,255,255,.035);
+}
+
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote {
+
+    position: absolute;
+
+    top: 58%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 560px;
+
+    text-align: center;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 21px;
+
+    line-height: 1.5;
+
+    font-style: italic;
+
+    color: #cfcac2;
+}
+
+
+.red {
+
+    color: #9b0000;
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.divider {
+
+    position: absolute;
+
+    top: 53%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 120px;
+
+    height: 1px;
+
+    background: #554f47;
+}
+
+
+/* =========================
+   ENTER
+========================= */
+
+.enter {
+
+    position: absolute;
+
+    top: 72%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: inline-block;
+
+    padding: 14px 48px;
+
+    border: 1px solid #49453f;
+
+    color: #ddd;
+
+    text-decoration: none;
+
+    font-family:
+        "Special Elite",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 6px;
+
+    transition:
+        .3s,
+        transform .3s;
+}
+
+
+.enter:hover {
+
+    color: white;
+
+    border-color: #8c0000;
+
+    background: rgba(120,0,0,.08);
+
+    transform:
+        translateX(-50%)
+        translateY(-3px);
+}
+
+
+/* =========================
+   LOCATION
+========================= */
+
+.location {
+
+    position: absolute;
+
+    bottom: 6%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    font-family:
+        "Special Elite",
+        monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 5px;
+
+    color: #555;
+
+    white-space: nowrap;
+}
+
+
+/* =========================
+   RED MARKS
+========================= */
+
+.mark {
+
+    position: absolute;
+
+    color: #8d0000;
+
+    font-family: Arial, sans-serif;
+
+    z-index: 20;
+
+    pointer-events: none;
+}
+
+
+.mark.one {
+
+    right: 19%;
+
+    top: 31%;
+
+    font-size: 45px;
+
+    transform: rotate(-18deg);
+}
+
+
+.mark.two {
+
+    left: 14%;
+
+    bottom: 20%;
+
+    font-size: 55px;
+
+    transform: rotate(12deg);
+}
+
+
+/* =========================
+   SIDE TEXT
+========================= */
+
+.side {
+
+    position: absolute;
+
+    left: 4%;
+
+    top: 42%;
+
+    writing-mode: vertical-rl;
+
+    font-family:
+        "Special Elite",
+        monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 4px;
+
+    color: #444;
+
+    z-index: 20;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        overflow: hidden;
+    }
+
+    nav {
+        padding: 20px 6%;
+    }
+
+    .logo {
+        font-size: 10px;
+    }
+
+    .nav {
+        gap: 14px;
+    }
+
+    .nav a {
+        font-size: 7px;
+        letter-spacing: 2px;
+    }
+
+    .top-label {
+        top: 22%;
+
+        font-size: 7px;
+
+        letter-spacing: 4px;
+    }
+
+    .title {
+        top: 30%;
+    }
+
+    .title h1 {
+        font-size: 23vw;
+
+        letter-spacing: -4px;
+    }
+
+    .title h1 span {
+        margin-left: 35px;
+    }
+
+    .chinese {
+        margin-top: 25px;
+
+        font-size: 20px;
+
+        letter-spacing: 7px;
+    }
+
+    .divider {
+        top: 52%;
+    }
+
+    .quote {
+
+        top: 58%;
+
+        width: 82%;
+
+        font-size: 18px;
+    }
+
+    .enter {
+
+        top: 72%;
+
+        padding: 12px 35px;
+
+        font-size: 8px;
+    }
+
+    .location {
+
+        bottom: 5%;
+
+        font-size: 6px;
+
+        letter-spacing: 3px;
+    }
+
+    .side {
+        display: none;
+    }
+
+    .mark.one {
+        right: 8%;
+    }
+
+    .mark.two {
+        left: 5%;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- BACKGROUND -->
+
+<div class="background-word">
+    MEILI
+</div>
+
+<div class="scratch one"></div>
+
+<div class="scratch two"></div>
+
+<div class="scratch three"></div>
+
+
+<!-- NAVIGATION -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+
+        MEILI BAI
+
+        <small>
+            SILENT ENGINE
+        </small>
+
+    </a>
+
+
+    <div class="nav">
+
+        <a href="index.html">
+            HOME
+        </a>
+
+        <a href="character.html">
+            CHARACTER
+        </a>
+
+        <a href="story.html">
+            STORY
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- MAIN -->
+
+<main>
+
+
+    <div class="top-label">
+
+        CHARACTER STORY / OOC
+
+    </div>
+
+
+    <div class="side">
+
+        PERSONAL OOC ARCHIVE
+        /
+        MEILI BAI
+        /
+        1999 — 2026
+
+    </div>
+
+
+    <!-- TITLE -->
+
+    <div class="title">
+
+        <h1>
+
+            MEILI
+
+            <span>
+                BAI
+            </span>
+
+        </h1>
+
+
+        <div class="chinese">
+
+            白梅丽
+
+        </div>
+
+    </div>
+
+
+    <!-- DIVIDER -->
+
+    <div class="divider"></div>
+
+
+    <!-- QUOTE -->
+
+    <div class="quote">
+
+        She doesn't need
+        <span class="red">
+            saving.
+        </span>
+
+        <br>
+
+        She just doesn't always know
+        how to save
+        <span class="red">
+            herself.
+        </span>
+
+    </div>
+
+
+    <!-- ENTER -->
+
+    <a href="character.html"
+       class="enter">
+
+        ENTER
+
+    </a>
+
+
+    <!-- LOCATION -->
+
+    <div class="location">
+
+        HONG KONG
+        &nbsp;&nbsp; /
+        &nbsp;&nbsp;
+        LOS SANTOS
+        &nbsp;&nbsp; /
+        &nbsp;&nbsp;
+        2026
+
+    </div>
+
+
+    <!-- RED MARKS -->
+
+    <div class="mark one">
+        ×
+    </div>
+
+    <div class="mark two">
+        //
+    </div>
+
+
+</main>
+
+
+</body>
+
+</html>
