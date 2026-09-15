@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Meili Bai — Character</title>
+
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Special+Elite&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050505;
+    color: #e8e5df;
+    overflow-x: hidden;
+}
+
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    pointer-events: none;
+    opacity: .08;
+
+    background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.8'/%3E%3C/svg%3E");
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0,0,0,.75) 100%
+        );
+
+    z-index: 998;
+}
+
+/* =========================
+   NAV
+========================= */
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    padding: 24px 4%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    z-index: 1000;
+}
+
+.logo {
+    color: #eee;
+    text-decoration: none;
+
+    font-family: "Special Elite", monospace;
+    font-size: 12px;
+    letter-spacing: 5px;
+}
+
+.logo small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #555;
+
+    font-size: 7px;
+    letter-spacing: 4px;
+}
+
+.nav {
+    display: flex;
+    gap: 32px;
+}
+
+.nav a {
+    color: #777;
+    text-decoration: none;
+
+    font-family: "Special Elite", monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+
+    transition: .3s;
+}
+
+.nav a:hover,
+.nav a.active {
+    color: #a00000;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+    min-height: 100vh;
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 130px 6% 70px;
+}
+
+.hero::before {
+    content: "白梅丽";
+
+    position: absolute;
+
+    right: -5%;
+    bottom: -8%;
+
+    font-family: "Cormorant Garamond", serif;
+
+    font-size: 34vw;
+
+    line-height: .7;
+
+    color: #0d0d0d;
+
+    transform: rotate(-8deg);
+
+    pointer-events: none;
+}
+
+/* scratched diagonal */
+
+.hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 1px;
+    height: 130%;
+
+    left: 45%;
+
+    top: -15%;
+
+    background: rgba(255,255,255,.06);
+
+    transform: rotate(23deg);
+}
+
+/* =========================
+   META
+========================= */
+
+.meta {
+    position: absolute;
+
+    top: 105px;
+    left: 9%;
+
+    z-index: 10;
+
+    font-family: "Special Elite", monospace;
+
+    font-size: 9px;
+
+    line-height: 2.2;
+
+    letter-spacing: 5px;
+
+    color: #666;
+}
+
+.meta strong {
+    color: #ddd;
+
+    font-weight: normal;
+}
+
+/* =========================
+   SIDE TEXT
+========================= */
+
+.side-text {
+    position: absolute;
+
+    left: 4%;
+
+    top: 38%;
+
+    writing-mode: vertical-rl;
+
+    font-family: "Special Elite", monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 4px;
+
+    color: #555;
+
+    z-index: 10;
+}
+
+/* =========================
+   NAME
+========================= */
+
+.name {
+    position: absolute;
+
+    left: 12%;
+
+    top: 28%;
+
+    z-index: 20;
+}
+
+.name h1 {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(100px, 14vw, 205px);
+
+    line-height: .72;
+
+    letter-spacing: -10px;
+
+    color: #eee;
+
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 2px 0 #222;
+}
+
+.name h1 span {
+    display: block;
+
+    margin-left: 75px;
+}
+
+/* =========================
+   CHINESE PAPER
+========================= */
+
+.chinese {
+    display: inline-block;
+
+    margin-left: 105px;
+    margin-top: 38px;
+
+    padding: 7px 30px 9px;
+
+    background: #ddd;
+
+    color: #111;
+
+    font-family:
+        "Noto Serif SC",
+        "Songti SC",
+        serif;
+
+    font-size: 28px;
+
+    letter-spacing: 10px;
+
+    transform: rotate(-2deg);
+
+    position: relative;
+
+    box-shadow:
+        8px 8px 0 rgba(255,255,255,.04);
+}
+
+.chinese::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 4px;
+
+    border: 1px solid rgba(0,0,0,.12);
+
+    pointer-events: none;
+}
+
+/* =========================
+   PHOTO
+========================= */
+
+.photo-area {
+    position: absolute;
+
+    top: 125px;
+    right: 12%;
+
+    width: min(430px, 34vw);
+
+    z-index: 30;
+}
+
+.photo {
+    position: relative;
+
+    width: 100%;
+
+    /*
+       รูปแนวตั้ง
+       เห็นหัว + มือ
+    */
+
+    aspect-ratio: 3 / 4;
+
+    overflow: hidden;
+
+    border: 1px solid #444;
+
+    transform: rotate(3deg);
+
+    background: #111;
+
+    box-shadow:
+        22px 25px 0 #111,
+        32px 34px 0 rgba(255,255,255,.025);
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    /*
+       ขยับขึ้นเพื่อให้เห็นหัว
+       และคงมือด้านล่าง
+    */
+
+    object-position: center 12%;
+
+    filter:
+        grayscale(100%)
+        contrast(118%)
+        brightness(82%);
+}
+
+/* =========================
+   TAPE
+========================= */
+
+.tape {
+    position: absolute;
+
+    width: 180px;
+    height: 35px;
+
+    background: rgba(210,210,210,.16);
+
+    z-index: 40;
+
+    top: -8px;
+    left: 35%;
+
+    transform: rotate(-4deg);
+}
+
+.tape.two {
+    top: auto;
+    bottom: -10px;
+    left: -20px;
+
+    transform: rotate(9deg);
+}
+
+/* =========================
+   INFO PAPER
+========================= */
+
+.info-paper {
+    position: absolute;
+
+    right: -100px;
+
+    bottom: 35px;
+
+    width: 185px;
+
+    padding: 20px;
+
+    background:
+        linear-gradient(
+            rgba(235,230,220,.95),
+            rgba(220,215,205,.95)
+        );
+
+    color: #161616;
+
+    transform: rotate(-5deg);
+
+    font-family: "Special Elite", monospace;
+
+    font-size: 9px;
+
+    line-height: 2;
+
+    z-index: 50;
+
+    box-shadow:
+        8px 10px 0 rgba(0,0,0,.4);
+}
+
+.info-paper strong {
+    font-size: 11px;
+
+    letter-spacing: 2px;
+}
+
+/* =========================
+   QUOTE
+========================= */
+
+.quote {
+    position: absolute;
+
+    left: 13%;
+
+    bottom: 75px;
+
+    width: 460px;
+
+    z-index: 40;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-size: 22px;
+
+    line-height: 1.35;
+
+    color: #ddd;
+}
+
+.red {
+    color: #a00000;
+}
+
+/* =========================
+   BARCODE
+========================= */
+
+.barcode {
+    position: absolute;
+
+    left: 5%;
+
+    bottom: 40px;
+
+    width: 120px;
+    height: 48px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #ddd 0 2px,
+            transparent 2px 5px,
+            #ddd 5px 6px,
+            transparent 6px 10px
+        );
+
+    opacity: .5;
+
+    z-index: 20;
+}
+
+.barcode::after {
+    content: "19990607";
+
+    position: absolute;
+
+    top: 52px;
+
+    left: 0;
+
+    font-family: monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 4px;
+
+    color: #777;
+}
+
+/* =========================
+   RED MARKS
+========================= */
+
+.mark {
+    position: absolute;
+
+    color: #900;
+
+    font-family: Arial, sans-serif;
+
+    z-index: 60;
+}
+
+.mark.one {
+    right: 39%;
+    top: 58%;
+
+    font-size: 55px;
+
+    transform: rotate(-15deg);
+}
+
+.mark.two {
+    right: 5%;
+    bottom: 90px;
+
+    font-size: 75px;
+
+    transform: rotate(18deg);
+}
+
+/* =========================
+   COLLAGE SCRATCHES
+========================= */
+
+.scratch {
+    position: absolute;
+
+    border: 1px solid rgba(255,255,255,.06);
+
+    transform: rotate(-12deg);
+
+    z-index: 2;
+}
+
+.scratch.one {
+    width: 300px;
+    height: 120px;
+
+    top: 18%;
+    right: 2%;
+}
+
+.scratch.two {
+    width: 420px;
+    height: 80px;
+
+    bottom: 12%;
+    left: 35%;
+}
+
+/* =========================
+   PROLOGUE
+========================= */
+
+.section {
+    position: relative;
+
+    width: 88%;
+
+    max-width: 1300px;
+
+    margin: auto;
+
+    padding: 150px 0;
+
+    border-top: 1px solid #222;
+}
+
+.section-label {
+    font-family: "Special Elite", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 5px;
+
+    color: #666;
+
+    margin-bottom: 30px;
+}
+
+.section-title {
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(65px, 9vw, 130px);
+
+    line-height: .78;
+
+    letter-spacing: -5px;
+
+    margin-bottom: 90px;
+}
+
+.content {
+    display: grid;
+
+    grid-template-columns: 260px 1fr;
+
+    gap: 100px;
+}
+
+.profile {
+    border-left: 1px solid #333;
+
+    padding-left: 25px;
+
+    font-family: "Special Elite", monospace;
+
+    font-size: 9px;
+
+    line-height: 2.3;
+
+    color: #666;
+}
+
+.profile strong {
+    display: block;
+
+    color: #ddd;
+
+    font-weight: normal;
+}
+
+.story {
+    max-width: 760px;
+}
+
+.story p {
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 20px;
+
+    line-height: 1.9;
+
+    color: #c8c5bf;
+
+    margin-bottom: 30px;
+}
+
+.story p:first-child::first-letter {
+    font-size: 85px;
+
+    float: left;
+
+    line-height: .7;
+
+    margin-right: 12px;
+
+    color: white;
+}
+
+.story strong {
+    color: white;
+}
+
+/* =========================
+   IDENTITY GRID
+========================= */
+
+.identity {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
+}
+
+.identity-item {
+    min-height: 145px;
+
+    padding: 28px;
+
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+}
+
+.identity-item small {
+    display: block;
+
+    font-family: "Special Elite", monospace;
+
+    color: #666;
+
+    font-size: 7px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 20px;
+}
+
+.identity-item strong {
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 24px;
+
+    font-weight: 500;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    padding: 40px;
+
+    border-top: 1px solid #222;
+
+    text-align: center;
+
+    font-family: "Special Elite", monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 4px;
+
+    color: #444;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    nav {
+        padding: 20px 6%;
+    }
+
+    .nav {
+        gap: 13px;
+    }
+
+    .nav a {
+        font-size: 7px;
+        letter-spacing: 1px;
+    }
+
+    .hero {
+        min-height: 1000px;
+
+        padding: 100px 7%;
+    }
+
+    .meta {
+        left: 7%;
+        top: 90px;
+    }
+
+    .side-text {
+        display: none;
+    }
+
+    .name {
+        left: 7%;
+        top: 210px;
+    }
+
+    .name h1 {
+        font-size: 23vw;
+
+        letter-spacing: -5px;
+    }
+
+    .name h1 span {
+        margin-left: 30px;
+    }
+
+    .chinese {
+        margin-left: 35px;
+
+        margin-top: 25px;
+
+        font-size: 20px;
+
+        letter-spacing: 7px;
+    }
+
+    .photo-area {
+        top: 480px;
+
+        right: 8%;
+
+        width: 72vw;
+
+        max-width: 350px;
+    }
+
+    .info-paper {
+        right: -20px;
+
+        bottom: 15px;
+
+        width: 145px;
+
+        font-size: 7px;
+    }
+
+    .quote {
+        left: 7%;
+
+        bottom: 40px;
+
+        width: 290px;
+
+        font-size: 17px;
+    }
+
+    .barcode {
+        display: none;
+    }
+
+    .mark.one {
+        right: 5%;
+        top: 420px;
+    }
+
+    .section {
+        width: 86%;
+
+        padding: 100px 0;
+    }
+
+    .section-title {
+        font-size: 17vw;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .story p {
+        font-size: 18px;
+    }
+
+    .identity {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <a href="index.html" class="logo">
+
+        MEILI BAI
+
+        <small>
+            SILENT ENGINE
+        </small>
+
+    </a>
+
+
+    <div class="nav">
+
+        <a href="index.html">
+            HOME
+        </a>
+
+        <a href="character.html" class="active">
+            CHARACTER
+        </a>
+
+        <a href="story.html">
+            STORY
+        </a>
+
+    </div>
+
+</nav>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+
+    <div class="meta">
+
+        07 / 06 / 1999
+
+        <br>
+
+        <strong>
+            HONG KONG
+        </strong>
+
+    </div>
+
+
+    <div class="side-text">
+
+        CHARACTER ARCHIVE
+        /
+        SILENT ENGINE
+        /
+        OOC
+
+    </div>
+
+
+    <!-- NAME -->
+
+    <div class="name">
+
+        <h1>
+
+            MEILI
+
+            <span>
+                BAI
+            </span>
+
+        </h1>
+
+
+        <div class="chinese">
+
+            白梅丽
+
+        </div>
+
+    </div>
+
+
+    <!-- PHOTO -->
+
+    <div class="photo-area">
+
+        <div class="photo">
+
+            <img
+                src="images/meili-main.jpg"
+                alt="Meili Bai"
+            >
+
+            <div class="tape"></div>
+
+            <div class="tape two"></div>
+
+        </div>
+
+
+        <div class="info-paper">
+
+            <strong>
+                MEILI BAI
+            </strong>
+
+            <br>
+
+            CHINESE
+
+            <br>
+
+            165 CM
+
+            <br>
+
+            55 KG
+
+            <br>
+
+            27 YEARS
+
+            <br>
+
+            HONG KONG
+
+        </div>
+
+    </div>
+
+
+    <!-- QUOTE -->
+
+    <div class="quote">
+
+        She doesn't need
+        <span class="red">
+            saving.
+        </span>
+
+        <br>
+
+        She just doesn't always know
+        how to save
+        <span class="red">
+            herself.
+        </span>
+
+    </div>
+
+
+    <!-- DECORATIONS -->
+
+    <div class="mark one">
+        ×
+    </div>
+
+    <div class="mark two">
+        //
+    </div>
+
+
+    <div class="scratch one"></div>
+
+    <div class="scratch two"></div>
+
+
+    <div class="barcode"></div>
+
+
+</header>
+
+
+<!-- =========================
+     PROLOGUE
+========================= -->
+
+<section class="section">
+
+
+    <div class="section-label">
+        01 / PROLOGUE
+    </div>
+
+
+    <h2 class="section-title">
+
+        SILENT<br>
+        BETWEEN<br>
+        THE LINES
+
+    </h2>
+
+
+    <div class="content">
+
+
+        <aside class="profile">
+
+            SUBJECT
+
+            <strong>
+                MEILI BAI
+            </strong>
+
+            <br>
+
+            ALIAS
+
+            <strong>
+                อาเหมย
+            </strong>
+
+            <br>
+
+            BORN
+
+            <strong>
+                07 / 06 / 1999
+            </strong>
+
+            <br>
+
+            ORIGIN
+
+            <strong>
+                HONG KONG
+            </strong>
+
+            <br>
+
+            NATIONALITY
+
+            <strong>
+                CHINESE
+            </strong>
+
+            <br>
+
+            HEIGHT
+
+            <strong>
+                165 CM
+            </strong>
+
+            <br>
+
+            WEIGHT
+
+            <strong>
+                55 KG
+            </strong>
+
+        </aside>
+
+
+        <article class="story">
+
+            <p>
+
+                อาเหมย หญิงสาวเชื้อสายจีนจาก Hong Kong
+                อายุ 27 ปี รูปร่างสมส่วนค่อนไปทางผอมเพรียว
+                ไหล่ไม่กว้างแต่ท่าทางมั่นคง
+                จากการเติบโตมากับงานช่างกลางแจ้ง
+
+            </p>
+
+
+            <p>
+
+                ผิวขาวเหลืองอมแทนเล็กน้อย
+                ผมสั้นสีน้ำตาลเข้ม
+                ดวงตาสีน้ำตาลอ่อนที่มองตรงอย่างนิ่งสงบ
+                ทำให้เธอดูสุขุมและเข้าถึงยากตั้งแต่แรกพบ
+
+            </p>
+
+
+            <p>
+
+                เธอไม่ใช่คนพูดมาก
+                และไม่ใช่คนที่เปิดใจง่าย
+
+            </p>
+
+
+            <p>
+
+                เบื้องหลังความเงียบคือคนที่เติบโต
+                มากับเสียงเครื่องยนต์
+                อาเหมยหลงใหลรถมอเตอร์ไซค์มาตั้งแต่วัยเด็ก
+
+                สำหรับเธอ มันไม่ใช่เพียงพาหนะ
+
+                <strong>
+                    แต่มันคืออิสระ
+                </strong>
+
+            </p>
+
+
+            <p>
+
+                ทุกครั้งที่บิดคันเร่ง
+                และปล่อยให้ถนนทอดยาวอยู่ตรงหน้า
+                เธอรู้สึกว่าทิ้งอดีต ความคาดหวัง
+                และแรงกดดันทั้งหมดไว้เบื้องหลัง
+
+            </p>
+
+
+            <p>
+
+                รอยสักบนผิวหนังไม่ใช่เพียงลวดลาย
+                แต่เป็นบันทึกชีวิตที่เธอเลือกเก็บไว้กับตัวเอง
+
+            </p>
+
+
+            <p>
+
+                บางลายแทนความทรงจำ
+                บางลายแทนการเริ่มต้นใหม่
+                และทุกลายเตือนให้เธอจำ
+                เส้นทางที่เคยเดินผ่านมา
+
+            </p>
+
+
+            <p>
+
+                อาเหมยไม่ต้องการเป็นจุดสนใจ
+                ไม่ต้องการชื่อเสียงและไม่ต้องการอำนาจ
+
+            </p>
+
+
+            <p>
+
+                เธอเพียงต้องการพื้นที่เล็ก ๆ
+                บนโลกใบนี้
+                ที่เธอสามารถยืนอยู่ได้ด้วยตัวเองอย่างมั่นคง
+
+            </p>
+
+
+            <p>
+
+                และในเมืองที่ไม่มีใครรู้จักเธอ
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    เรื่องราวของ Meili Bai
+                    กำลังเริ่มต้นขึ้นอย่างเงียบงัน
+                </strong>
+
+            </p>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     IDENTITY
+========================= -->
+
+<section class="section">
+
+
+    <div class="section-label">
+        02 / IDENTITY
+    </div>
+
+
+    <h2 class="section-title">
+
+        WHO<br>
+        SHE IS
+
+    </h2>
+
+
+    <div class="identity">
+
+
+        <div class="identity-item">
+
+            <small>
+                NAME
+            </small>
+
+            <strong>
+                Meili Bai
+            </strong>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <small>
+                CHINESE NAME
+            </small>
+
+            <strong>
+                白梅丽
+            </strong>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <small>
+                ALIAS
+            </small>
+
+            <strong>
+                อาเหมย
+            </strong>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <small>
+                AGE
+            </small>
+
+            <strong>
+                27
+            </strong>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <small>
+                BORN
+            </small>
+
+            <strong>
+                07 / 06 / 1999
+            </strong>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <small>
+                ORIGIN
+            </small>
+
+            <strong>
+                Hong Kong
+            </strong>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <small>
+                HEIGHT
+            </small>
+
+            <strong>
+                165 CM
+            </strong>
+
+        </div>
+
+
+        <div class="identity-item">
+
+            <small>
+                WEIGHT
+            </small>
+
+            <strong>
+                55 KG
+            </strong>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    MEILI BAI
+    /
+    CHARACTER ARCHIVE
+    /
+    OOC
+
+</footer>
+
+
+</body>
+
+</html>
