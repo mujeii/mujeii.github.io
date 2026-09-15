@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Story — Meili Bai</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #11100e;
+            color: #e8e0d2;
+            font-family: Georgia, "Times New Roman", serif;
+            line-height: 1.8;
+        }
+
+        /* Film grain */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0.06;
+            z-index: 20;
+            background-image:
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 25px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            background: linear-gradient(
+                to bottom,
+                rgba(17,16,14,.95),
+                transparent
+            );
+        }
+
+        .logo {
+            color: #e8e0d2;
+            text-decoration: none;
+            font-family: "Courier New", monospace;
+            font-size: 11px;
+            letter-spacing: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: #a99d8b;
+            text-decoration: none;
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: #e8e0d2;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 130px 25px 80px;
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(100,75,48,.18),
+                    transparent 55%
+                );
+        }
+
+        .eyebrow {
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            letter-spacing: 5px;
+            color: #8f8270;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 100px);
+            font-weight: normal;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+        }
+
+        .chinese {
+            margin-top: 18px;
+            font-size: 42px;
+            letter-spacing: 14px;
+            color: #d8cdbd;
+        }
+
+        .line {
+            width: 90px;
+            height: 1px;
+            background: #776956;
+            margin: 38px auto;
+        }
+
+        .intro {
+            max-width: 650px;
+            margin: auto;
+            color: #aaa092;
+            font-size: 15px;
+            font-style: italic;
+        }
+
+        /* Story */
+        .story {
+            max-width: 900px;
+            margin: auto;
+            padding: 50px 30px 150px;
+        }
+
+        .chapter {
+            padding: 100px 0;
+            border-top: 1px solid rgba(232,224,210,.12);
+        }
+
+        .chapter-number {
+            font-family: "Courier New", monospace;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #857763;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: clamp(32px, 5vw, 58px);
+            font-weight: normal;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+        }
+
+        .chapter-subtitle {
+            color: #9d907e;
+            font-style: italic;
+            font-size: 17px;
+            margin-bottom: 35px;
+        }
+
+        .chapter p {
+            max-width: 720px;
+            color: #b7ad9f;
+            font-size: 15px;
+            line-height: 2;
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            margin: 45px 0;
+            padding-left: 25px;
+            border-left: 1px solid #75644f;
+            color: #d8cdbd;
+            font-style: italic;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 20px;
+            border-top: 1px solid rgba(232,224,210,.1);
+            text-align: center;
+            color: #756b5e;
+            font-family: "Courier New", monospace;
+            font-size: 9px;
+            letter-spacing: 3px;
+        }
+
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 8px;
+            }
+
+            h1 {
+                letter-spacing: 4px;
+            }
+
+            .chinese {
+                font-size: 34px;
+                letter-spacing: 10px;
+            }
+
+            .chapter {
+                padding: 70px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+
+        <a href="index.html" class="logo">
+            MEILI BAI
+        </a>
+
+        <div class="nav-links">
+            <a href="#story">STORY</a>
+            <a href="#chapters">CHAPTERS</a>
+            <a href="index.html">HOME</a>
+        </div>
+
+    </nav>
+
+
+    <header class="hero">
+
+        <div>
+
+            <div class="eyebrow">
+                CHARACTER STORY / OOC
+            </div>
+
+            <h1>
+                Her Story
+            </h1>
+
+            <div class="chinese">
+                她的故事
+            </div>
+
+            <div class="line"></div>
+
+            <p class="intro">
+                A personal record of Meili Bai —
+                the places she left behind,
+                the people she met,
+                and the life she continues to build.
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <main class="story" id="story">
+
+        <section class="chapter" id="chapters">
+
+            <div class="chapter-number">
+                CHAPTER 01 / THE BEGINNING
+            </div>
+
+            <h2>
+                The Lost
+            </h2>
+
+            <div class="chapter-subtitle">
+                Before she knew where she was going.
+            </div>
+
+            <p>
+                Meili Bai was born in Hong Kong, where the sea,
+                fishing boats and the sound of machinery became
+                part of the world she knew.
+            </p>
+
+            <p>
+                She grew up learning that nothing stays still.
+                People leave. Places change.
+                And sometimes, moving forward is the only choice left.
+            </p>
+
+            <div class="quote">
+                “Some roads are chosen.
+                Others simply begin beneath your feet.”
+            </div>
+
+        </section>
+
+
+        <section class="chapter">
+
+            <div class="chapter-number">
+                CHAPTER 02 / SAR
+            </div>
+
+            <h2>
+                SAR
+            </h2>
+
+            <div class="chapter-subtitle">
+                Somewhere between losing and finding herself.
+            </div>
+
+            <p>
+                The years that followed brought Meili into
+                a different kind of life.
+            </p>
+
+            <p>
+                New people. New responsibilities.
+                And experiences that slowly changed the way
+                she looked at the world around her.
+            </p>
+
+        </section>
+
+
+        <section class="chapter">
+
+            <div class="chapter-number">
+                CHAPTER 03 / ROUTE 68
+            </div>
+
+            <h2>
+                Yellow Jack
+            </h2>
+
+            <div class="chapter-subtitle">
+                A place built from dust, gasoline and stubbornness.
+            </div>
+
+            <p>
+                Somewhere along Route 68 stood a small bar
+                called Yellow Jack.
+            </p>
+
+            <p>
+                It became more than a business.
+                It became a place where people could stop,
+                drink, talk, laugh, and stay for a while.
+            </p>
+
+            <div class="quote">
+                “Maybe home isn't a place.
+                Maybe it's the people who make you want to stay.”
+            </div>
+
+        </section>
+
+
+        <section class="chapter">
+
+            <div class="chapter-number">
+                CHAPTER 04 / LIMITED RP
+            </div>
+
+            <h2>
+                A New Beginning
+            </h2>
+
+            <div class="chapter-subtitle">
+                New city. New uniform. Same girl.
+            </div>
+
+            <p>
+                Eventually, Meili left another chapter behind
+                and found herself starting again.
+            </p>
+
+            <p>
+                This time, she chose a different path.
+                Not behind a bar.
+                Not beneath the hood of a car.
+                But beside people who needed help.
+            </p>
+
+            <p>
+                She became an EMT.
+            </p>
+
+            <div class="quote">
+                “She doesn't need saving.
+                She just doesn't always know how to save herself.”
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        MEILI BAI / 白梅丽
+        &nbsp;&nbsp;—&nbsp;&nbsp;
+        LOS SANTOS, CA / 2026
+    </footer>
+
+</body>
+</html>
