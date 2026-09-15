@@ -288,15 +288,15 @@ nav {
    PHOTO
 ========================= */
 
-.photo-area {
+.photo-wrap {
     position: absolute;
 
-    top: 125px;
-    right: 12%;
+    top: 90px;
+    right: 10%;
 
-    width: min(430px, 34vw);
+    width: min(390px, 32vw);
 
-    z-index: 30;
+    z-index: 8;
 }
 
 .photo {
@@ -304,24 +304,19 @@ nav {
 
     width: 100%;
 
-    /*
-       รูปแนวตั้ง
-       เห็นหัว + มือ
-    */
-
+    /* สำคัญ — ไม่ crop หัว */
     aspect-ratio: 3 / 4;
 
     overflow: hidden;
 
-    border: 1px solid #444;
+    border: 1px solid #333;
 
     transform: rotate(3deg);
 
     background: #111;
 
     box-shadow:
-        22px 25px 0 #111,
-        32px 34px 0 rgba(255,255,255,.025);
+        25px 25px 0 #101010;
 }
 
 .photo img {
@@ -330,19 +325,31 @@ nav {
 
     object-fit: cover;
 
-    /*
-       ขยับขึ้นเพื่อให้เห็นหัว
-       และคงมือด้านล่าง
-    */
-
-    object-position: center 12%;
+    object-position: center top;
 
     filter:
         grayscale(100%)
-        contrast(118%)
+        contrast(115%)
         brightness(82%);
 }
 
+/* tape */
+
+.tape {
+    position: absolute;
+
+    width: 180px;
+    height: 32px;
+
+    top: 35px;
+    right: -55px;
+
+    background: rgba(180,180,180,.18);
+
+    transform: rotate(43deg);
+
+    z-index: 20;
+}
 
 /* =========================
    PHOTO NOTE
@@ -385,15 +392,17 @@ nav {
     position: absolute;
 
     left: 8%;
-    bottom: 35px;
+    bottom: 55px;
 
-    width: 420px;
+    width: 380px;
 
     font-family: Georgia, serif;
+
     font-style: italic;
 
     font-size: 20px;
-    line-height: 1.5;
+
+    line-height: 1.45;
 
     color: #ddd;
 
@@ -444,10 +453,10 @@ nav {
     position: absolute;
 
     left: 0;
-    bottom: 35px;
+    bottom: 50px;
 
-    width: 120px;
-    height: 45px;
+    width: 150px;
+    height: 55px;
 
     background:
         repeating-linear-gradient(
@@ -458,7 +467,7 @@ nav {
             transparent 6px 10px
         );
 
-    opacity: .55;
+    opacity: .75;
 }
 
 /* =========================
