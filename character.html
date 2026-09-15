@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Meili Bai — Character</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+
+    background: #050505;
+
+    color: #f2f2f2;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    overflow-x: hidden;
+
+}
+
+
+/* =========================
+   GRAIN
+========================= */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 999;
+
+    opacity: .08;
+
+    background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.7'/%3E%3C/svg%3E");
+
+}
+
+
+/* =========================
+   NAV
+========================= */
+
+nav {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 70px;
+
+    padding: 0 6%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    z-index: 100;
+
+    background:
+        linear-gradient(
+            to bottom,
+            rgba(0,0,0,.95),
+            transparent
+        );
+
+}
+
+.logo {
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: white;
+
+    text-decoration: none;
+
+}
+
+.nav-links {
+
+    display: flex;
+
+    gap: 30px;
+
+}
+
+.nav-links a {
+
+    color: #aaa;
+
+    text-decoration: none;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    transition: .3s;
+
+}
+
+.nav-links a:hover {
+
+    color: #b40000;
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+}
+
+
+/* giant background text */
+
+.hero::before {
+
+    content: "白梅丽";
+
+    position: absolute;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 32vw;
+
+    font-weight: bold;
+
+    color: #0b0b0b;
+
+    line-height: 1;
+
+    transform: rotate(-8deg);
+
+    pointer-events: none;
+
+}
+
+
+/* =========================
+   HERO CONTENT
+========================= */
+
+.hero-content {
+
+    position: relative;
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    min-height: 700px;
+
+}
+
+
+/* top date */
+
+.date {
+
+    position: absolute;
+
+    top: 90px;
+
+    left: 0;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: #777;
+
+}
+
+
+/* vertical text */
+
+.vertical {
+
+    position: absolute;
+
+    left: -20px;
+
+    top: 250px;
+
+    writing-mode: vertical-rl;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #777;
+
+}
+
+
+/* main name */
+
+.name {
+
+    position: absolute;
+
+    left: 5%;
+
+    top: 180px;
+
+    z-index: 3;
+
+}
+
+
+.name h1 {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(70px, 13vw, 180px);
+
+    line-height: .75;
+
+    letter-spacing: -7px;
+
+    text-transform: uppercase;
+
+}
+
+
+.name h1 span {
+
+    display: block;
+
+    margin-left: 100px;
+
+}
+
+
+.chinese {
+
+    margin-top: 35px;
+
+    margin-left: 120px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 50px;
+
+    letter-spacing: 18px;
+
+}
+
+
+/* =========================
+   PHOTO
+========================= */
+
+.hero-photo {
+
+    position: absolute;
+
+    width: 390px;
+
+    height: 530px;
+
+    right: 9%;
+
+    top: 120px;
+
+    transform:
+        rotate(4deg);
+
+    z-index: 2;
+
+    overflow: hidden;
+
+    background: #151515;
+
+    border: 1px solid #333;
+
+    box-shadow:
+        20px 20px 0 #111;
+
+}
+
+
+/*
+   ใส่รูป Meili ตรงนี้
+   images/meili-main.jpg
+*/
+
+.hero-photo img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        grayscale(100%)
+        contrast(115%)
+        brightness(80%);
+
+}
+
+
+/* tape */
+
+.tape {
+
+    position: absolute;
+
+    width: 150px;
+
+    height: 32px;
+
+    background:
+        rgba(190,190,190,.22);
+
+    top: 90px;
+
+    right: -35px;
+
+    transform: rotate(45deg);
+
+    z-index: 5;
+
+}
+
+
+/* =========================
+   QUOTE
+========================= */
+
+.hero-quote {
+
+    position: absolute;
+
+    left: 8%;
+
+    bottom: 90px;
+
+    width: 280px;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-style: italic;
+
+    font-size: 20px;
+
+    line-height: 1.4;
+
+}
+
+
+.red {
+
+    color: #b00000;
+
+}
+
+
+/* =========================
+   SCRIBBLE
+========================= */
+
+.scribble {
+
+    position: absolute;
+
+    font-size: 90px;
+
+    color: #8d0000;
+
+    opacity: .8;
+
+    transform: rotate(-18deg);
+
+    font-family:
+        cursive;
+
+}
+
+.s1 {
+
+    top: 110px;
+
+    right: 5%;
+
+}
+
+.s2 {
+
+    bottom: 120px;
+
+    left: 45%;
+
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section {
+
+    position: relative;
+
+    width: 90%;
+
+    max-width: 1200px;
+
+    margin: auto;
+
+    padding: 130px 0;
+
+    border-top:
+        1px solid #222;
+
+}
+
+
+/* section number */
+
+.section-number {
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 12px;
+
+    color: #777;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* section title */
+
+.section-title {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(55px, 9vw, 120px);
+
+    line-height: .8;
+
+    text-transform: uppercase;
+
+    margin-bottom: 70px;
+
+}
+
+
+/* =========================
+   PROLOGUE
+========================= */
+
+.prologue {
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1.5fr;
+
+    gap: 100px;
+
+    align-items: start;
+
+}
+
+
+.prologue-side {
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    line-height: 2;
+
+    color: #777;
+
+    letter-spacing: 1px;
+
+}
+
+
+.prologue-side strong {
+
+    color: white;
+
+}
+
+
+.prologue-text {
+
+    max-width: 700px;
+
+}
+
+
+.prologue-text p {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 17px;
+
+    line-height: 2;
+
+    color: #ccc;
+
+    margin-bottom: 30px;
+
+}
+
+
+.big-letter {
+
+    float: left;
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 90px;
+
+    line-height: .7;
+
+    margin-right: 12px;
+
+    color: white;
+
+}
+
+
+/* =========================
+   INFO COLLAGE
+========================= */
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    border-top:
+        1px solid #333;
+
+    border-left:
+        1px solid #333;
+
+}
+
+
+.info {
+
+    min-height: 150px;
+
+    padding: 25px;
+
+    border-right:
+        1px solid #333;
+
+    border-bottom:
+        1px solid #333;
+
+}
+
+
+.info small {
+
+    display: block;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: #666;
+
+    margin-bottom: 15px;
+
+}
+
+
+.info strong {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size: 20px;
+
+    font-weight: normal;
+
+}
+
+
+/* =========================
+   TEXT COLLAGE
+========================= */
+
+.collage {
+
+    position: relative;
+
+    min-height: 600px;
+
+}
+
+
+.collage-text {
+
+    position: absolute;
+
+    font-family:
+        Georgia,
+        serif;
+
+    text-transform: uppercase;
+
+}
+
+
+.text-one {
+
+    top: 0;
+
+    left: 5%;
+
+    font-size: 80px;
+
+    line-height: .8;
+
+}
+
+
+.text-two {
+
+    top: 130px;
+
+    right: 10%;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 12px;
+
+    width: 220px;
+
+    line-height: 2;
+
+}
+
+
+.text-three {
+
+    bottom: 100px;
+
+    left: 20%;
+
+    font-size: 100px;
+
+    color: #b00000;
+
+    transform: rotate(-8deg);
+
+}
+
+
+.text-four {
+
+    bottom: 20px;
+
+    right: 5%;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 10px;
+
+    color: #777;
+
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final {
+
+    min-height: 80vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+}
+
+
+.final h2 {
+
+    font-family:
+        Georgia,
+        serif;
+
+    font-size:
+        clamp(60px, 12vw, 160px);
+
+    line-height: .8;
+
+}
+
+
+.final p {
+
+    margin-top: 40px;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    color: #777;
+
+    font-size: 10px;
+
+    letter-spacing: 4px;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+    border-top:
+        1px solid #222;
+
+    padding: 35px;
+
+    text-align: center;
+
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 4px;
+
+    color: #555;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    .nav-links {
+
+        gap: 12px;
+
+    }
+
+    .nav-links a {
+
+        font-size: 8px;
+
+    }
+
+
+    .hero-content {
+
+        min-height: 850px;
+
+    }
+
+
+    .name {
+
+        left: 0;
+
+        top: 150px;
+
+    }
+
+
+    .name h1 {
+
+        font-size: 20vw;
+
+    }
+
+
+    .name h1 span {
+
+        margin-left: 30px;
+
+    }
+
+
+    .chinese {
+
+        margin-left: 35px;
+
+        font-size: 35px;
+
+    }
+
+
+    .hero-photo {
+
+        width: 260px;
+
+        height: 360px;
+
+        right: 5%;
+
+        top: 350px;
+
+    }
+
+
+    .hero-quote {
+
+        left: 5%;
+
+        bottom: 30px;
+
+        font-size: 15px;
+
+    }
+
+
+    .prologue {
+
+        grid-template-columns: 1fr;
+
+        gap: 40px;
+
+    }
+
+
+    .info-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    .section-title {
+
+        font-size: 18vw;
+
+    }
+
+
+    .text-one {
+
+        font-size: 55px;
+
+    }
+
+
+    .text-three {
+
+        font-size: 70px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<nav>
+
+    <a href="index.html"
+       class="logo">
+
+        MEILI BAI
+
+    </a>
+
+
+    <div class="nav-links">
+
+        <a href="character.html">
+            CHARACTER
+        </a>
+
+        <a href="story.html">
+            STORY
+        </a>
+
+        <a href="index.html">
+            HOME
+        </a>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<header class="hero">
+
+
+    <div class="hero-content">
+
+
+        <div class="date">
+
+            07 / 06 / 1999
+            &nbsp;&nbsp;—
+            &nbsp;&nbsp;
+            HONG KONG
+
+        </div>
+
+
+        <div class="vertical">
+
+            SILENT ENGINE / CHARACTER ARCHIVE
+
+        </div>
+
+
+        <div class="name">
+
+            <h1>
+
+                MEILI
+
+                <span>
+                    BAI
+                </span>
+
+            </h1>
+
+
+            <div class="chinese">
+
+                白梅丽
+
+            </div>
+
+        </div>
+
+
+
+        <!-- PHOTO -->
+
+        <div class="hero-photo">
+
+            <img
+                src="images/meili-main.jpg"
+                alt="Meili Bai"
+            >
+
+            <div class="tape"></div>
+
+        </div>
+
+
+
+        <div class="hero-quote">
+
+            She doesn't need
+            <span class="red">saving.</span>
+
+            <br><br>
+
+            She just doesn't always
+            know how to save
+            <span class="red">herself.</span>
+
+        </div>
+
+
+
+        <div class="scribble s1">
+            ✶
+        </div>
+
+        <div class="scribble s2">
+            ×
+        </div>
+
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================
+     PROLOGUE
+========================= -->
+
+<section class="section">
+
+
+    <div class="section-number">
+        01 / PROLOGUE
+    </div>
+
+
+    <h2 class="section-title">
+
+        SILENT<br>
+        BETWEEN<br>
+        THE LINES
+
+    </h2>
+
+
+    <div class="prologue">
+
+
+        <aside class="prologue-side">
+
+            SUBJECT<br>
+
+            <strong>
+                MEILI BAI
+            </strong>
+
+            <br><br>
+
+            ALIAS<br>
+
+            <strong>
+                อาเหมย
+            </strong>
+
+            <br><br>
+
+            ORIGIN<br>
+
+            <strong>
+                HONG KONG
+            </strong>
+
+            <br><br>
+
+            NATIONALITY<br>
+
+            <strong>
+                CHINESE
+            </strong>
+
+            <br><br>
+
+            STATUS<br>
+
+            <strong>
+                LOS SANTOS
+            </strong>
+
+        </aside>
+
+
+
+        <div class="prologue-text">
+
+
+            <p>
+
+                <span class="big-letter">อ</span>
+                าเหมย หญิงสาวเชื้อสายจีนจาก
+                Hong Kong อายุ 27 ปี
+                รูปร่างสมส่วนค่อนไปทางผอมเพรียว
+                ไหล่ไม่กว้างแต่ท่าทางมั่นคง
+                จากการเติบโตมากับงานช่างกลางแจ้ง
+
+            </p>
+
+
+            <p>
+
+                ผิวขาวเหลืองอมแทนเล็กน้อย
+                ผมสั้นสีน้ำตาลเข้ม
+                ดวงตาสีน้ำตาลอ่อนที่มองตรง
+                อย่างนิ่งสงบ
+                ทำให้เธอดูสุขุมและเข้าถึงยาก
+                ตั้งแต่แรกพบ
+
+            </p>
+
+
+            <p>
+
+                ใบหน้าคม
+                โหนกแก้มชัด
+                ริมฝีปากบาง
+                และไม่ค่อยแสดงอารมณ์
+                ผ่านสีหน้า
+
+            </p>
+
+
+            <p>
+
+                เธอไม่ใช่คนพูดมาก
+                และไม่ใช่คนที่เปิดใจง่าย
+
+            </p>
+
+
+            <p>
+
+                เบื้องหลังความเงียบ
+                คือคนที่เติบโตมากับเสียงเครื่องยนต์
+
+                อาเหมยหลงใหลรถมอเตอร์ไซค์
+                มาตั้งแต่วัยเด็ก
+
+                สำหรับเธอ
+                มันไม่ใช่เพียงพาหนะ
+
+                <strong>
+                    แต่มันคืออิสระ
+                </strong>
+
+            </p>
+
+
+            <p>
+
+                ทุกครั้งที่บิดคันเร่ง
+                และปล่อยให้ถนนทอดยาวอยู่ตรงหน้า
+                เธอรู้สึกว่าทิ้งอดีต
+                ความคาดหวัง
+                และแรงกดดันทั้งหมดไว้เบื้องหลัง
+
+                เหลือเพียงตัวตนที่แท้จริง
+                ของเธอเท่านั้น
+
+            </p>
+
+
+            <p>
+
+                รอยสักบนผิวหนัง
+                ไม่ใช่เพียงลวดลาย
+                แต่เป็นบันทึกชีวิต
+                ที่เธอเลือกเก็บไว้กับตัวเอง
+
+                แต่ละเส้นหมึกมีความหมาย
+
+            </p>
+
+
+            <p>
+
+                บางลายแทนความทรงจำ
+                บางลายแทนการเริ่มต้นใหม่
+                และทุกลายเตือนให้เธอจำ
+                เส้นทางที่เคยเดินผ่านมา
+
+            </p>
+
+
+            <p>
+
+                อาเหมยไม่ต้องการเป็นจุดสนใจ
+                ไม่ต้องการชื่อเสียง
+                และไม่ต้องการอำนาจ
+
+                เธอเพียงต้องการพื้นที่เล็ก ๆ
+                บนโลกใบนี้
+
+                ที่เธอสามารถยืนอยู่ได้
+                ด้วยตัวเองอย่างมั่นคง
+
+            </p>
+
+
+            <p>
+
+                และในเมืองที่ไม่มีใครรู้จักเธอ
+
+            </p>
+
+
+            <p>
+
+                <strong>
+                    เรื่องราวของ Meili Bai
+                    กำลังเริ่มต้นขึ้นอย่างเงียบงัน
+                </strong>
+
+            </p>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     IDENTITY
+========================= -->
+
+<section class="section">
+
+
+    <div class="section-number">
+        02 / IDENTITY
+    </div>
+
+
+    <h2 class="section-title">
+
+        WHO<br>
+        SHE IS
+
+    </h2>
+
+
+    <div class="info-grid">
+
+
+        <div class="info">
+
+            <small>
+                NAME
+            </small>
+
+            <strong>
+                Meili Bai
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                CHINESE NAME
+            </small>
+
+            <strong>
+                白梅丽
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                ALIAS
+            </small>
+
+            <strong>
+                อาเหมย
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                AGE
+            </small>
+
+            <strong>
+                27
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                BORN
+            </small>
+
+            <strong>
+                07 / 06 / 1999
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                ORIGIN
+            </small>
+
+            <strong>
+                Hong Kong
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                HEIGHT
+            </small>
+
+            <strong>
+                165 CM
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>
+                WEIGHT
+            </small>
+
+            <strong>
+                55 KG
+            </strong>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     COLLAGE
+========================= -->
+
+<section class="section">
+
+
+    <div class="section-number">
+        03 / NOTES
+    </div>
+
+
+    <div class="collage">
+
+
+        <div class="collage-text text-one">
+
+            MOTOR<br>
+            CYCLE
+
+        </div>
+
+
+        <div class="collage-text text-two">
+
+            SHE WAS RAISED
+            AROUND ENGINES.
+
+            <br><br>
+
+            SHE FOUND FREEDOM
+            ON THE ROAD.
+
+        </div>
+
+
+        <div class="collage-text text-three">
+
+            FREEDOM
+
+        </div>
+
+
+        <div class="collage-text text-four">
+
+            MEMORY / INK / ROAD / SILENCE
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FINAL
+========================= -->
+
+<section class="section final">
+
+
+    <div>
+
+        <h2>
+
+            SILENT<br>
+            ENGINE
+
+        </h2>
+
+
+        <p>
+
+            MEILI BAI / 白梅丽
+            <br><br>
+            LOS SANTOS — 2026
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<footer>
+
+    MEILI BAI
+    &nbsp; / &nbsp;
+    CHARACTER ARCHIVE
+    &nbsp; / &nbsp;
+    OOC
+
+</footer>
+
+
+</body>
+
+</html>
