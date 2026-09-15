@@ -1,1081 +1,592 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Meili Bai — Silent Engine</title>
 
-
 <style>
 
-/* =====================================================
-   RESET
-===================================================== */
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 html,
 body {
     width: 100%;
-    height: 100%;
+    min-height: 100%;
 }
 
 body {
-
-    background: #050505;
-
-    color: #e8e3da;
-
-    overflow: hidden;
-
-    position: relative;
-
+    background: #090909;
+    color: #e9e3d8;
+    font-family: "DM Mono", monospace;
+    overflow-x: hidden;
 }
 
-
-/* =====================================================
-   GRAIN
-===================================================== */
+/* =========================
+   BACKGROUND
+========================= */
 
 body::before {
-
     content: "";
-
     position: fixed;
-
     inset: 0;
-
     pointer-events: none;
-
-    z-index: 100;
-
-    opacity: .075;
-
-    background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.7'/%3E%3C/svg%3E");
-
-}
-
-
-/* =====================================================
-   DARK VIGNETTE
-===================================================== */
-
-body::after {
-
-    content: "";
-
-    position: fixed;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    z-index: 99;
 
     background:
-        radial-gradient(
-            ellipse at center,
-            transparent 30%,
-            rgba(0,0,0,.82) 100%
+        linear-gradient(
+            115deg,
+            transparent 0%,
+            rgba(255,255,255,0.025) 48%,
+            transparent 49%
+        ),
+        linear-gradient(
+            170deg,
+            transparent 0%,
+            rgba(255,255,255,0.018) 65%,
+            transparent 66%
         );
 
+    z-index: 0;
 }
 
-
-/* =====================================================
-   BACKGROUND WORD
-===================================================== */
-
-.bg-word {
-
-    position: absolute;
-
-    left: -5%;
-
-    bottom: -13%;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 31vw;
-
-    line-height: .7;
-
-    letter-spacing: -18px;
-
-    color: #0c0c0c;
-
-    transform: rotate(-7deg);
-
-    user-select: none;
-
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
     pointer-events: none;
+
+    background-image:
+        radial-gradient(rgba(255,255,255,0.08) 0.6px, transparent 0.7px);
+
+    background-size: 5px 5px;
+    opacity: 0.12;
 
     z-index: 1;
-
 }
 
+/* =========================
+   MAIN
+========================= */
 
-/* =====================================================
-   ABSTRACT GRAPHIC LINES
-===================================================== */
+.page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+}
 
-.line {
+/* =========================
+   HEADER
+========================= */
 
+.header {
     position: absolute;
-
-    pointer-events: none;
-
-    z-index: 2;
-
-}
-
-.line.vertical {
-
-    width: 1px;
-
-    height: 130%;
-
-    top: -15%;
-
-    left: 51%;
-
-    background: rgba(255,255,255,.035);
-
-    transform: rotate(18deg);
-
-}
-
-.line.horizontal {
-
-    width: 120%;
-
-    height: 1px;
-
-    left: -10%;
-
-    top: 72%;
-
-    background: rgba(255,255,255,.03);
-
-    transform: rotate(-5deg);
-
-}
-
-.frame {
-
-    position: absolute;
-
-    width: 580px;
-
-    height: 300px;
-
-    right: -120px;
-
-    top: 17%;
-
-    border: 1px solid rgba(255,255,255,.025);
-
-    transform: rotate(-7deg);
-
-    pointer-events: none;
-
-    z-index: 2;
-
-}
-
-
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
-nav {
-
-    position: absolute;
-
-    top: 0;
-
-    left: 0;
-
-    width: 100%;
-
-    padding: 25px 4%;
+    top: 28px;
+    left: 4%;
+    right: 4%;
 
     display: flex;
-
     justify-content: space-between;
-
     align-items: flex-start;
 
-    z-index: 50;
-
+    z-index: 10;
 }
-
-
-/* LEFT LOGO */
 
 .logo {
-
+    color: #e9e3d8;
     text-decoration: none;
-
-    color: #d9d4cc;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
+    letter-spacing: 6px;
+    font-size: 14px;
 }
 
-.logo small {
-
+.logo span {
     display: block;
-
-    margin-top: 6px;
-
-    color: #4c4944;
-
-    font-size: 7px;
-
-    letter-spacing: 4px;
-
-}
-
-
-/* RIGHT MENU */
-
-.menu {
-
-    display: flex;
-
-    gap: 38px;
-
-}
-
-.menu a {
-
-    text-decoration: none;
-
-    color: #66635e;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-
-    transition: .3s;
-
-}
-
-.menu a:hover {
-
-    color: #8d0000;
-
-}
-
-.menu a:first-child {
-
-    color: #d4cfc7;
-
-}
-
-
-/* =====================================================
-   MAIN
-===================================================== */
-
-main {
-
-    width: 100%;
-
-    height: 100vh;
-
-    position: relative;
-
-    z-index: 10;
-
-}
-
-
-/* =====================================================
-   TOP LABEL
-===================================================== */
-
-.top-label {
-
-    position: absolute;
-
-    top: 22%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-family:
-        "Courier New",
-        monospace;
+    margin-top: 7px;
 
     font-size: 8px;
-
-    letter-spacing: 7px;
-
-    color: #77736d;
-
-    white-space: nowrap;
-
+    letter-spacing: 4px;
+    color: #66615b;
 }
 
+.nav {
+    display: flex;
+    gap: 38px;
+}
 
-/* =====================================================
-   MAIN TITLE
-===================================================== */
+.nav a {
+    color: #77716a;
+    text-decoration: none;
 
-.title {
+    font-size: 10px;
+    letter-spacing: 4px;
 
+    transition: 0.3s;
+}
+
+.nav a:hover {
+    color: #e9e3d8;
+}
+
+/* =========================
+   SIDE TEXT
+========================= */
+
+.side-text {
     position: absolute;
 
-    top: 27%;
+    left: 3.5%;
+    top: 40%;
 
-    left: 50%;
+    writing-mode: vertical-rl;
 
-    transform: translateX(-50%);
+    font-size: 8px;
+    letter-spacing: 4px;
 
-    width: 100%;
+    color: #4f4a45;
+
+    z-index: 4;
+}
+
+/* =========================
+   RED MARKS
+========================= */
+
+.red-mark {
+    position: absolute;
+
+    color: #8e0808;
+
+    font-family: Arial, sans-serif;
+    font-size: 32px;
+
+    z-index: 4;
+}
+
+.mark-one {
+    top: 36%;
+    right: 17%;
+}
+
+.mark-two {
+    bottom: 19%;
+    left: 12%;
+
+    font-size: 42px;
+    transform: rotate(-12deg);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
 
     text-align: center;
 
+    padding: 100px 30px 70px;
+
+    z-index: 3;
 }
 
+/* =========================
+   SMALL TITLE
+========================= */
 
-/* MEILI BAI */
+.eyebrow {
+    margin-bottom: 28px;
 
-.title h1 {
+    color: #716b64;
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size:
-        clamp(80px, 10.5vw, 155px);
-
-    line-height: .9;
-
-    letter-spacing: -6px;
-
-    font-weight: 600;
-
-    color: #eeeae2;
+    font-size: 10px;
+    letter-spacing: 8px;
 
     text-transform: uppercase;
-
-    white-space: nowrap;
-
-    text-shadow:
-        2px 2px 0 #151515;
-
 }
 
+/* =========================
+   NAME
+========================= */
 
-/* =====================================================
-   CHINESE PAPER
-===================================================== */
+.name {
+    position: relative;
+
+    font-family: "Playfair Display", Georgia, serif;
+
+    font-size: clamp(90px, 13vw, 220px);
+
+    font-weight: 500;
+
+    line-height: 0.78;
+
+    letter-spacing: -8px;
+
+    color: #eee8dd;
+
+    white-space: nowrap;
+}
+
+.name::after {
+    content: "+";
+
+    position: absolute;
+
+    right: -55px;
+    top: 12%;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 30px;
+
+    color: #8e0808;
+}
+
+/* =========================
+   CHINESE NAME
+========================= */
 
 .chinese {
+    margin-top: 32px;
 
     display: inline-block;
 
-    margin-top: 38px;
+    padding: 10px 42px 12px;
 
-    padding:
-        8px 34px
-        10px;
-
-    background: #ddd8cf;
+    background: #e7e1d6;
 
     color: #111;
 
-    font-family:
-        "Noto Serif SC",
-        "Songti SC",
-        "SimSun",
-        serif;
+    font-family: Georgia, serif;
 
-    font-size: 28px;
+    font-size: clamp(22px, 2.5vw, 36px);
 
-    letter-spacing: 11px;
+    letter-spacing: 12px;
 
-    transform: rotate(-3deg);
-
-    position: relative;
+    transform: rotate(-1.5deg);
 
     box-shadow:
-        8px 8px 0 rgba(255,255,255,.025);
-
+        8px 7px 0 rgba(255,255,255,0.05);
 }
 
+/* =========================
+   LINE
+========================= */
 
-/* inner border */
-
-.chinese::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 4px;
-
-    border: 1px solid rgba(0,0,0,.13);
-
-}
-
-
-/* =====================================================
-   DIVIDER
-===================================================== */
-
-.divider {
-
-    position: absolute;
-
-    top: 58.5%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 90px;
-
+.line {
+    width: 120px;
     height: 1px;
 
-    background: #554f48;
+    background: #5c554d;
 
+    margin: 32px auto 26px;
 }
 
-
-/* =====================================================
+/* =========================
    QUOTE
-===================================================== */
+========================= */
 
 .quote {
+    font-family: "Playfair Display", Georgia, serif;
 
-    position: absolute;
-
-    top: 61%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 650px;
-
-    text-align: center;
-
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
-
-    font-size: 20px;
-
-    line-height: 1.55;
+    font-size: clamp(17px, 1.5vw, 23px);
 
     font-style: italic;
 
-    color: #c9c4bc;
+    line-height: 1.8;
 
+    color: #d8d1c6;
+
+    max-width: 900px;
 }
 
-
-.red {
-
-    color: #850000;
-
+.quote .red {
+    color: #9c1111;
 }
 
-
-/* =====================================================
+/* =========================
    DESCRIPTION
-===================================================== */
+========================= */
 
 .description {
+    margin-top: 30px;
 
-    position: absolute;
+    max-width: 760px;
 
-    top: 71%;
+    font-size: 9px;
 
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 720px;
-
-    text-align: center;
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size: 8px;
-
-    line-height: 1.9;
+    line-height: 2.2;
 
     letter-spacing: 2px;
 
-    color: #55524d;
+    color: #625d56;
 
     text-transform: uppercase;
-
 }
 
-
-/* =====================================================
+/* =========================
    ENTER BUTTON
-===================================================== */
+========================= */
 
 .enter {
+    margin-top: 38px;
 
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 145px;
+    height: 52px;
+
+    border: 1px solid #4f4a44;
+
+    color: #d9d2c7;
+
+    text-decoration: none;
+
+    font-size: 10px;
+
+    letter-spacing: 7px;
+
+    transition: 0.35s;
+}
+
+.enter:hover {
+    background: #e9e3d8;
+    color: #111;
+    border-color: #e9e3d8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
     position: absolute;
 
-    top: 80%;
+    bottom: 32px;
 
     left: 50%;
 
     transform: translateX(-50%);
 
-    display: inline-block;
-
-    padding:
-        13px 46px;
-
-    border:
-        1px solid #4d4943;
-
-    color: #d9d4cc;
-
-    text-decoration: none;
-
-    font-family:
-        "Courier New",
-        monospace;
+    color: #555049;
 
     font-size: 9px;
 
     letter-spacing: 6px;
 
-    transition:
-        .3s;
-
-}
-
-
-.enter:hover {
-
-    color: #fff;
-
-    border-color: #800000;
-
-    background:
-        rgba(100,0,0,.08);
-
-    transform:
-        translateX(-50%)
-        translateY(-3px);
-
-}
-
-
-/* =====================================================
-   LOCATION
-===================================================== */
-
-.location {
-
-    position: absolute;
-
-    bottom: 5%;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    font-family:
-        "Courier New",
-        monospace;
-
-    font-size: 8px;
-
-    letter-spacing: 5px;
-
-    color: #4b4843;
-
     white-space: nowrap;
 
+    z-index: 5;
 }
 
+/* =========================
+   HUGE BACKGROUND WORD
+========================= */
 
-/* =====================================================
-   SIDE TEXT
-===================================================== */
-
-.side-text {
-
+.background-word {
     position: absolute;
 
-    left: 4%;
+    left: -4%;
+    bottom: -9%;
 
-    top: 39%;
+    font-family: "Playfair Display", Georgia, serif;
 
-    writing-mode:
-        vertical-rl;
+    font-size: clamp(180px, 27vw, 500px);
 
-    font-family:
-        "Courier New",
-        monospace;
+    line-height: 0.8;
 
-    font-size: 7px;
+    color: rgba(255,255,255,0.025);
 
-    letter-spacing: 4px;
+    letter-spacing: -20px;
 
-    color: #373531;
+    user-select: none;
 
+    z-index: 2;
 }
 
+/* =========================
+   RESPONSIVE
+========================= */
 
-/* =====================================================
-   RED MARKS
-===================================================== */
+@media (max-width: 800px) {
 
-.red-mark {
-
-    position: absolute;
-
-    color: #750000;
-
-    font-family: Arial, sans-serif;
-
-    pointer-events: none;
-
-    z-index: 30;
-
-}
-
-
-.red-mark.one {
-
-    right: 22%;
-
-    top: 36%;
-
-    font-size: 30px;
-
-    transform: rotate(-18deg);
-
-}
-
-
-.red-mark.two {
-
-    left: 13%;
-
-    bottom: 19%;
-
-    font-size: 43px;
-
-    transform: rotate(12deg);
-
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 700px) {
-
-
-    body {
-
-        overflow: hidden;
-
+    .header {
+        top: 22px;
+        left: 6%;
+        right: 6%;
     }
-
-
-    nav {
-
-        padding: 20px 6%;
-
-    }
-
 
     .logo {
-
-        font-size: 9px;
-
-        letter-spacing: 3px;
-
-    }
-
-
-    .logo small {
-
-        font-size: 6px;
-
-    }
-
-
-    .menu {
-
-        gap: 13px;
-
-    }
-
-
-    .menu a {
-
-        font-size: 6px;
-
-        letter-spacing: 2px;
-
-    }
-
-
-    .top-label {
-
-        top: 22%;
-
-        font-size: 6px;
-
+        font-size: 11px;
         letter-spacing: 4px;
-
     }
 
-
-    .title {
-
-        top: 29%;
-
+    .nav {
+        gap: 15px;
     }
 
-
-    .title h1 {
-
-        font-size: 18vw;
-
-        letter-spacing: -4px;
-
+    .nav a {
+        font-size: 8px;
+        letter-spacing: 2px;
     }
 
+    .hero {
+        padding-top: 150px;
+    }
+
+    .name {
+        white-space: normal;
+        font-size: 20vw;
+        letter-spacing: -5px;
+    }
+
+    .name::after {
+        right: -20px;
+        font-size: 20px;
+    }
 
     .chinese {
-
-        margin-top: 30px;
-
-        padding:
-            7px 23px
-            9px;
-
         font-size: 20px;
-
+        padding: 8px 25px;
         letter-spacing: 7px;
-
     }
-
-
-    .divider {
-
-        top: 57%;
-
-    }
-
 
     .quote {
-
-        top: 60%;
-
-        width: 86%;
-
-        font-size: 17px;
-
+        font-size: 16px;
     }
-
 
     .description {
-
-        top: 70%;
-
-        width: 84%;
-
-        font-size: 6px;
-
-        letter-spacing: 1.3px;
-
-    }
-
-
-    .enter {
-
-        top: 80%;
-
-        padding:
-            11px 32px;
-
         font-size: 7px;
-
+        max-width: 90%;
     }
-
-
-    .location {
-
-        bottom: 5%;
-
-        font-size: 6px;
-
-        letter-spacing: 3px;
-
-    }
-
 
     .side-text {
-
         display: none;
-
     }
 
-
-    .frame {
-
-        right: -280px;
-
+    .footer {
+        font-size: 7px;
+        letter-spacing: 3px;
     }
-
-
-    .red-mark.one {
-
-        right: 7%;
-
-        top: 34%;
-
-    }
-
-
-    .red-mark.two {
-
-        left: 5%;
-
-    }
-
 }
 
 </style>
-
 </head>
 
 
 <body>
 
+<div class="page">
 
-<!-- =====================================================
-     BACKGROUND
-===================================================== -->
+    <!-- HEADER -->
 
-<div class="bg-word">
-    MEILI
-</div>
+    <header class="header">
 
-<div class="line vertical"></div>
-
-<div class="line horizontal"></div>
-
-<div class="frame"></div>
-
-
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
-
-<nav>
-
-
-    <a
-        href="index.html"
-        class="logo"
-    >
-
-        MEILI BAI
-
-        <small>
-            SILENT ENGINE
-        </small>
-
-    </a>
-
-
-    <div class="menu">
-
-
-        <a href="index.html">
-            HOME
+        <a href="index.html" class="logo">
+            MEILI BAI
+            <span>SILENT ENGINE</span>
         </a>
 
+        <nav class="nav">
+            <a href="index.html">HOME</a>
+            <a href="character.html">CHARACTER</a>
+            <a href="story.html">STORY</a>
+        </nav>
 
-        <a href="character.html">
-            CHARACTER
-        </a>
-
-
-        <a href="story.html">
-            STORY
-        </a>
+    </header>
 
 
-    </div>
-
-
-</nav>
-
-
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
-<main>
-
-
-    <!-- SIDE -->
+    <!-- SIDE TEXT -->
 
     <div class="side-text">
-
-        PERSONAL OOC ARCHIVE
-        /
-        MEILI BAI
-        /
-        1999 — 2026
-
+        PERSONAL OOC ARCHIVE / MEILI BAI / 1999 — 2026
     </div>
 
 
-    <!-- TOP LABEL -->
+    <!-- RED DETAILS -->
 
-    <div class="top-label">
-
-        CHARACTER STORY / OOC
-
-    </div>
+    <div class="red-mark mark-one">×</div>
+    <div class="red-mark mark-two">//</div>
 
 
-    <!-- TITLE -->
+    <!-- MAIN -->
 
-    <div class="title">
+    <main class="hero">
+
+        <div class="eyebrow">
+            CHARACTER STORY / OOC
+        </div>
 
 
-        <h1>
+        <h1 class="name">
             MEILI BAI
         </h1>
 
 
         <div class="chinese">
-
             白梅丽
+        </div>
+
+
+        <div class="line"></div>
+
+
+        <div class="quote">
+
+            She doesn't need <span class="red">saving.</span><br>
+
+            She just doesn't always know how to save
+            <span class="red">herself.</span>
 
         </div>
 
 
+        <p class="description">
+
+            A personal OOC record of Meili Bai's character story —
+            documenting her growth, choices,<br>
+            and the direction her story takes over time.
+
+        </p>
+
+
+        <a href="character.html" class="enter">
+            ENTER
+        </a>
+
+    </main>
+
+
+    <!-- BACKGROUND -->
+
+    <div class="background-word">
+        MEILI
     </div>
 
 
-    <!-- DIVIDER -->
+    <!-- FOOTER -->
 
-    <div class="divider"></div>
-
-
-    <!-- QUOTE -->
-
-    <div class="quote">
-
-        She doesn't need
-        <span class="red">
-            saving.
-        </span>
-
-        <br>
-
-        She just doesn't always know how to save
-        <span class="red">
-            herself.
-        </span>
-
+    <div class="footer">
+        LOS SANTOS, SA &nbsp; / &nbsp; 2026
     </div>
 
-
-    <!-- DESCRIPTION -->
-
-    <div class="description">
-
-        A PERSONAL OOC RECORD OF MEILI BAI'S CHARACTER STORY — DOCUMENTING HER GROWTH, CHOICES,
-        <br>
-        AND THE DIRECTION HER STORY TAKES OVER TIME.
-
-    </div>
-
-
-    <!-- ENTER -->
-
-    <a
-        href="character.html"
-        class="enter"
-    >
-
-        ENTER
-
-    </a>
-
-
-    <!-- LOCATION -->
-
-    <div class="location">
-
-        LOS SANTOS, SA
-        &nbsp;&nbsp; /
-        &nbsp;&nbsp;
-        2026
-
-    </div>
-
-
-    <!-- RED MARKS -->
-
-    <div class="red-mark one">
-        ×
-    </div>
-
-
-    <div class="red-mark two">
-        //
-    </div>
-
-
-</main>
-
+</div>
 
 </body>
-
 </html>
