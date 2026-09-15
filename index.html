@@ -2,11 +2,8 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Meili Bai — Silent Engine</title>
 
@@ -15,12 +12,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Special+Elite&display=swap');
 
 
+/* =========================
+   RESET
+========================= */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
-
 
 html,
 body {
@@ -28,15 +28,10 @@ body {
     height: 100%;
 }
 
-
 body {
-
     background: #050505;
-
     color: #e8e5df;
-
     overflow: hidden;
-
     position: relative;
 }
 
@@ -57,10 +52,10 @@ body::before {
 
     z-index: 100;
 
-    opacity: .08;
+    opacity: .075;
 
     background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='.8'/%3E%3C/svg%3E");
 }
 
 
@@ -83,21 +78,21 @@ body::after {
     background:
         radial-gradient(
             ellipse at center,
-            transparent 35%,
-            rgba(0,0,0,.8) 100%
+            transparent 30%,
+            rgba(0,0,0,.82) 100%
         );
 }
 
 
 /* =========================
-   BACKGROUND COLLAGE
+   BACKGROUND WORD
 ========================= */
 
 .background-word {
 
     position: absolute;
 
-    left: -4%;
+    left: -6%;
 
     bottom: -10%;
 
@@ -106,27 +101,33 @@ body::after {
         "Times New Roman",
         serif;
 
-    font-size: 31vw;
+    font-size: 32vw;
 
     line-height: .7;
 
-    color: #0d0d0d;
+    color: #0c0c0c;
 
     transform: rotate(-8deg);
 
+    pointer-events: none;
+
     user-select: none;
 
-    pointer-events: none;
+    z-index: 1;
 }
 
+
+/* =========================
+   SCRATCHES
+========================= */
 
 .scratch {
 
     position: absolute;
 
-    border: 1px solid rgba(255,255,255,.045);
-
     pointer-events: none;
+
+    z-index: 2;
 }
 
 
@@ -134,11 +135,13 @@ body::after {
 
     width: 600px;
 
-    height: 220px;
+    height: 210px;
 
     right: -100px;
 
-    top: 13%;
+    top: 12%;
+
+    border: 1px solid rgba(255,255,255,.045);
 
     transform: rotate(-9deg);
 }
@@ -146,19 +149,23 @@ body::after {
 
 .scratch.two {
 
-    width: 700px;
+    width: 720px;
 
-    height: 120px;
+    height: 110px;
 
-    left: -180px;
+    left: -160px;
 
-    bottom: 12%;
+    bottom: 13%;
+
+    border: 1px solid rgba(255,255,255,.035);
 
     transform: rotate(7deg);
 }
 
 
 .scratch.three {
+
+    position: absolute;
 
     width: 1px;
 
@@ -168,7 +175,7 @@ body::after {
 
     top: -15%;
 
-    background: rgba(255,255,255,.04);
+    background: rgba(255,255,255,.045);
 
     transform: rotate(21deg);
 
@@ -177,7 +184,7 @@ body::after {
 
 
 /* =========================
-   NAV
+   NAVIGATION
 ========================= */
 
 nav {
@@ -206,7 +213,7 @@ nav {
 
     text-decoration: none;
 
-    color: #eee;
+    color: #e5e2dc;
 
     font-family:
         "Special Elite",
@@ -222,7 +229,7 @@ nav {
 
     display: block;
 
-    margin-top: 5px;
+    margin-top: 6px;
 
     color: #555;
 
@@ -244,7 +251,7 @@ nav {
 
     text-decoration: none;
 
-    color: #666;
+    color: #777;
 
     font-family:
         "Special Elite",
@@ -264,6 +271,12 @@ nav {
 }
 
 
+.nav a:first-child {
+
+    color: #a00000;
+}
+
+
 /* =========================
    MAIN
 ========================= */
@@ -275,12 +288,6 @@ main {
     width: 100%;
 
     height: 100vh;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
 
     z-index: 10;
 }
@@ -294,7 +301,7 @@ main {
 
     position: absolute;
 
-    top: 25%;
+    top: 24%;
 
     left: 50%;
 
@@ -315,6 +322,34 @@ main {
 
 
 /* =========================
+   SIDE TEXT
+========================= */
+
+.side {
+
+    position: absolute;
+
+    left: 4%;
+
+    top: 40%;
+
+    writing-mode: vertical-rl;
+
+    font-family:
+        "Special Elite",
+        monospace;
+
+    font-size: 7px;
+
+    letter-spacing: 4px;
+
+    color: #3f3f3f;
+
+    z-index: 20;
+}
+
+
+/* =========================
    TITLE
 ========================= */
 
@@ -322,15 +357,17 @@ main {
 
     position: absolute;
 
-    top: 30%;
+    top: 28%;
 
     left: 50%;
 
     transform: translateX(-50%);
 
+    width: 100%;
+
     text-align: center;
 
-    width: 100%;
+    z-index: 20;
 }
 
 
@@ -342,11 +379,11 @@ main {
         serif;
 
     font-size:
-        clamp(90px, 13vw, 190px);
+        clamp(85px, 11.5vw, 170px);
 
     line-height: .72;
 
-    letter-spacing: -8px;
+    letter-spacing: -7px;
 
     color: #eee;
 
@@ -363,21 +400,21 @@ main {
 
     display: block;
 
-    margin-left: 80px;
+    margin-left: 75px;
 }
 
 
 /* =========================
-   CHINESE
+   CHINESE PAPER
 ========================= */
 
 .chinese {
 
     display: inline-block;
 
-    margin-top: 35px;
+    margin-top: 55px;
 
-    padding: 7px 28px 10px;
+    padding: 10px 38px 12px;
 
     background: #ddd;
 
@@ -388,53 +425,31 @@ main {
         "Songti SC",
         serif;
 
-    font-size: 25px;
+    font-size: 30px;
 
-    letter-spacing: 11px;
+    letter-spacing: 12px;
 
-    transform: rotate(-2deg);
+    transform: rotate(-3deg);
+
+    position: relative;
 
     box-shadow:
-        7px 7px 0 rgba(255,255,255,.035);
+        8px 8px 0 rgba(255,255,255,.035),
+        2px 3px 0 rgba(0,0,0,.5);
 }
 
 
-/* =========================
-   QUOTE
-========================= */
+.chinese::before {
 
-.quote {
+    content: "";
 
     position: absolute;
 
-    top: 58%;
+    inset: 5px;
 
-    left: 50%;
+    border: 1px solid rgba(0,0,0,.12);
 
-    transform: translateX(-50%);
-
-    width: 560px;
-
-    text-align: center;
-
-    font-family:
-        "Cormorant Garamond",
-        Georgia,
-        serif;
-
-    font-size: 21px;
-
-    line-height: 1.5;
-
-    font-style: italic;
-
-    color: #cfcac2;
-}
-
-
-.red {
-
-    color: #9b0000;
+    pointer-events: none;
 }
 
 
@@ -446,29 +461,72 @@ main {
 
     position: absolute;
 
-    top: 53%;
+    top: 61%;
 
     left: 50%;
 
     transform: translateX(-50%);
 
-    width: 120px;
+    width: 100px;
 
     height: 1px;
 
     background: #554f47;
+
+    z-index: 20;
 }
 
 
 /* =========================
-   ENTER
+   QUOTE
+========================= */
+
+.quote {
+
+    position: absolute;
+
+    top: 65%;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 600px;
+
+    text-align: center;
+
+    font-family:
+        "Cormorant Garamond",
+        Georgia,
+        serif;
+
+    font-size: 21px;
+
+    line-height: 1.45;
+
+    font-style: italic;
+
+    color: #cfcac2;
+
+    z-index: 20;
+}
+
+
+.red {
+
+    color: #9b0000;
+}
+
+
+/* =========================
+   ENTER BUTTON
 ========================= */
 
 .enter {
 
     position: absolute;
 
-    top: 72%;
+    top: 77%;
 
     left: 50%;
 
@@ -492,17 +550,21 @@ main {
 
     letter-spacing: 6px;
 
+    z-index: 30;
+
     transition:
-        .3s,
+        color .3s,
+        border-color .3s,
+        background .3s,
         transform .3s;
 }
 
 
 .enter:hover {
 
-    color: white;
+    color: #fff;
 
-    border-color: #8c0000;
+    border-color: #8d0000;
 
     background: rgba(120,0,0,.08);
 
@@ -534,9 +596,11 @@ main {
 
     letter-spacing: 5px;
 
-    color: #555;
+    color: #4e4e4e;
 
     white-space: nowrap;
+
+    z-index: 20;
 }
 
 
@@ -550,9 +614,11 @@ main {
 
     color: #8d0000;
 
-    font-family: Arial, sans-serif;
+    font-family:
+        Arial,
+        sans-serif;
 
-    z-index: 20;
+    z-index: 30;
 
     pointer-events: none;
 }
@@ -562,7 +628,7 @@ main {
 
     right: 19%;
 
-    top: 31%;
+    top: 32%;
 
     font-size: 45px;
 
@@ -574,7 +640,7 @@ main {
 
     left: 14%;
 
-    bottom: 20%;
+    bottom: 19%;
 
     font-size: 55px;
 
@@ -583,30 +649,53 @@ main {
 
 
 /* =========================
-   SIDE TEXT
+   LITTLE CROSS
 ========================= */
 
-.side {
+.cross {
 
     position: absolute;
 
-    left: 4%;
+    right: 8%;
 
-    top: 42%;
+    bottom: 8%;
 
-    writing-mode: vertical-rl;
+    width: 28px;
 
-    font-family:
-        "Special Elite",
-        monospace;
+    height: 28px;
 
-    font-size: 7px;
+    z-index: 30;
+}
 
-    letter-spacing: 4px;
 
-    color: #444;
+.cross::before,
+.cross::after {
 
-    z-index: 20;
+    content: "";
+
+    position: absolute;
+
+    left: 13px;
+
+    top: 0;
+
+    width: 2px;
+
+    height: 28px;
+
+    background: #700000;
+}
+
+
+.cross::before {
+
+    transform: rotate(45deg);
+}
+
+
+.cross::after {
+
+    transform: rotate(-45deg);
 }
 
 
@@ -620,24 +709,43 @@ main {
         overflow: hidden;
     }
 
+
     nav {
+
         padding: 20px 6%;
     }
 
+
     .logo {
+
         font-size: 10px;
+
+        letter-spacing: 4px;
     }
 
+
+    .logo small {
+
+        font-size: 6px;
+    }
+
+
     .nav {
+
         gap: 14px;
     }
 
+
     .nav a {
+
         font-size: 7px;
+
         letter-spacing: 2px;
     }
 
+
     .top-label {
+
         top: 22%;
 
         font-size: 7px;
@@ -645,49 +753,64 @@ main {
         letter-spacing: 4px;
     }
 
+
     .title {
-        top: 30%;
+
+        top: 29%;
     }
 
+
     .title h1 {
+
         font-size: 23vw;
 
         letter-spacing: -4px;
     }
 
+
     .title h1 span {
+
         margin-left: 35px;
     }
 
+
     .chinese {
-        margin-top: 25px;
+
+        margin-top: 35px;
+
+        padding: 7px 25px 9px;
 
         font-size: 20px;
 
         letter-spacing: 7px;
     }
 
+
     .divider {
-        top: 52%;
+
+        top: 59%;
     }
+
 
     .quote {
 
-        top: 58%;
+        top: 63%;
 
         width: 82%;
 
         font-size: 18px;
     }
 
+
     .enter {
 
-        top: 72%;
+        top: 75%;
 
         padding: 12px 35px;
 
         font-size: 8px;
     }
+
 
     .location {
 
@@ -698,16 +821,32 @@ main {
         letter-spacing: 3px;
     }
 
+
     .side {
+
         display: none;
     }
 
+
     .mark.one {
+
         right: 8%;
+
+        top: 32%;
     }
 
+
     .mark.two {
+
         left: 5%;
+
+        bottom: 18%;
+    }
+
+
+    .cross {
+
+        display: none;
     }
 
 }
@@ -720,11 +859,14 @@ main {
 <body>
 
 
-<!-- BACKGROUND -->
+<!-- =========================
+     BACKGROUND
+========================= -->
 
 <div class="background-word">
     MEILI
 </div>
+
 
 <div class="scratch one"></div>
 
@@ -733,11 +875,16 @@ main {
 <div class="scratch three"></div>
 
 
-<!-- NAVIGATION -->
+<!-- =========================
+     NAV
+========================= -->
 
 <nav>
 
-    <a href="index.html" class="logo">
+    <a
+        href="index.html"
+        class="logo"
+    >
 
         MEILI BAI
 
@@ -767,17 +914,14 @@ main {
 </nav>
 
 
-<!-- MAIN -->
+<!-- =========================
+     MAIN
+========================= -->
 
 <main>
 
 
-    <div class="top-label">
-
-        CHARACTER STORY / OOC
-
-    </div>
-
+    <!-- SIDE -->
 
     <div class="side">
 
@@ -786,6 +930,15 @@ main {
         MEILI BAI
         /
         1999 — 2026
+
+    </div>
+
+
+    <!-- TOP LABEL -->
+
+    <div class="top-label">
+
+        CHARACTER STORY / OOC
 
     </div>
 
@@ -841,8 +994,10 @@ main {
 
     <!-- ENTER -->
 
-    <a href="character.html"
-       class="enter">
+    <a
+        href="character.html"
+        class="enter"
+    >
 
         ENTER
 
@@ -870,9 +1025,13 @@ main {
         ×
     </div>
 
+
     <div class="mark two">
         //
     </div>
+
+
+    <div class="cross"></div>
 
 
 </main>
