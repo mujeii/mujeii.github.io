@@ -407,52 +407,61 @@ nav {
     right: -90px;
     bottom: 15px;
 
-    width: 160px;
+    width: 175px;                     /* ขยายความกว้างขึ้นเล็กน้อย */
 
-    padding: 18px;
+    padding: 22px 20px 18px;          /* ดัน Padding บนลงมานิดหน่อยเพื่อไม่ให้ตัวหนังสือชิดขอบเทป */
 
     background: #e4dfd5;
+    background-image:                 /* ใส่แสงเงาให้กระดาษดูย่นมีมิติ */
+        linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 60%),
+        radial-gradient(circle at 50% 50%, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.08) 100%);
 
     color: #111;
 
-    transform: rotate(-5deg);
+    transform: rotate(-3deg);
 
     font-family: "Courier New", monospace;
 
     font-size: 9px;
 
-    line-height: 1.8;
+    line-height: 2;                   /* เพิ่มระยะห่างบรรทัดให้อ่านง่ายขึ้น */
+
+    box-shadow:                       /* ใส่เงาใต้กระดาษ */
+        4px 8px 18px rgba(0, 0, 0, 0.5),
+        inset 0 0 10px rgba(0, 0, 0, 0.05);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
 
     z-index: 20;
 }
 
 .photo-note strong {
     font-size: 11px;
+    letter-spacing: 1px;
 }
 
-    /* เทปใสแปะตรงกลางขอบบน */
+/* เทปใสแปะตรงกลางขอบบน */
 .photo-note::before {
     content: "";
     position: absolute;
 
-    top: -10px;                  /* ยื่นขึ้นไปแปะรูปด้านบน */
+    top: -10px;
     left: 50%;
-    transform: translateX(-50%) rotate(-2deg); /* จัดให้อยู่กึ่งกลาง + เอียงเล็กน้อย */
+    transform: translateX(-50%) rotate(-2deg);
 
-    width: 55px;                 /* ความกว้างแผ่นเทป */
-    height: 22px;                /* ความสูงแผ่นเทป */
+    width: 55px;
+    height: 22px;
 
-    background: rgba(255, 255, 255, 0.4);      /* สีเทปขุ่นโปร่งแสง */
+    background: rgba(255, 255, 255, 0.4);
     border: 1px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(1.5px);                /* เบลอภาพฉากหลัง */
+    backdrop-filter: blur(1.5px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 
-    border-left: 2px dashed rgba(255, 255, 255, 0.6);  /* รอยตัดเส้นปรุฝั่งซ้าย */
-    border-right: 2px dashed rgba(255, 255, 255, 0.6); /* รอยตัดเส้นปรุฝั่งขวา */
+    border-left: 2px dashed rgba(255, 255, 255, 0.6);
+    border-right: 2px dashed rgba(255, 255, 255, 0.6);
 
     z-index: 25;
 }
-
 /* =========================
    QUOTE
 ========================= */
