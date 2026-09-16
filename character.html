@@ -259,15 +259,19 @@ nav {
     margin-left: 90px;
 }
 
-/* Chinese — MOVED HIGHER & SMALLER TAPE */
+/* Chinese — REDUCED BY 20% & ROTATED MORE LEFT */
 
 .tape-label-container {
     position: relative;
     display: inline-block;
-    margin-top: -85px; /* ดึงขยับขึ้นสูงอีก */
-    margin-left: 360px;
+    margin-top: -65px;
+    margin-left: 330px;
     padding: 10px 12px;
-    transform: rotate(-2deg);
+
+    /* ย่อขนาดลง 20% (scale 0.8) และเอียงซ้ายเพิ่มขึ้นเป็น -7deg */
+    transform: rotate(-7deg) scale(0.8);
+    transform-origin: center center;
+
     z-index: 20;
 }
 
@@ -296,7 +300,6 @@ nav {
     line-height: 1;
 }
 
-/* เทปกาวใสเล็กลง */
 .scotct-tape {
     position: absolute;
     background: rgba(255, 255, 255, 0.32);
@@ -308,7 +311,7 @@ nav {
 }
 
 .tape-left {
-    width: 20px; /* ปรับขนาดเทปให้เล็กลง */
+    width: 20px;
     height: 48px;
     left: 2px;
     top: 50%;
@@ -318,7 +321,7 @@ nav {
 }
 
 .tape-right {
-    width: 20px; /* ปรับขนาดเทปให้เล็กลง */
+    width: 20px;
     height: 48px;
     right: 2px;
     top: 50%;
@@ -845,9 +848,9 @@ footer {
     }
 
     .tape-label-container {
-        margin-left: 60px;
-        margin-top: -30px;
-        transform: rotate(-2deg) scale(0.75);
+        margin-left: 40px;
+        margin-top: -20px;
+        transform: rotate(-7deg) scale(0.65);
     }
 
     .photo-wrap {
@@ -979,7 +982,7 @@ footer {
         </h1>
 
 
-        <!-- ป้ายชื่อกระดาษยับพร้อมเทปกาวใส (ปรับดึงขึ้น + ย่อเทปเล็กลง) -->
+        <!-- ป้ายชื่อกระดาษยับพร้อมเทปกาวใส (ย่อลง 20% + เอียงซ้ายเพิ่มขึ้น) -->
         <div class="tape-label-container">
             <div class="scotct-tape tape-left"></div>
             <div class="scotct-tape tape-right"></div>
