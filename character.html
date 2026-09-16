@@ -430,6 +430,29 @@ nav {
     font-size: 11px;
 }
 
+    /* เทปใสแปะตรงกลางขอบบน */
+.photo-note::before {
+    content: "";
+    position: absolute;
+
+    top: -10px;                  /* ยื่นขึ้นไปแปะรูปด้านบน */
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg); /* จัดให้อยู่กึ่งกลาง + เอียงเล็กน้อย */
+
+    width: 55px;                 /* ความกว้างแผ่นเทป */
+    height: 22px;                /* ความสูงแผ่นเทป */
+
+    background: rgba(255, 255, 255, 0.4);      /* สีเทปขุ่นโปร่งแสง */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(1.5px);                /* เบลอภาพฉากหลัง */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+    border-left: 2px dashed rgba(255, 255, 255, 0.6);  /* รอยตัดเส้นปรุฝั่งซ้าย */
+    border-right: 2px dashed rgba(255, 255, 255, 0.6); /* รอยตัดเส้นปรุฝั่งขวา */
+
+    z-index: 25;
+}
+
 /* =========================
    QUOTE
 ========================= */
