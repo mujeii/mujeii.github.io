@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meili Bai — Silent Engine</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;min-height:100%}
+body{background:#090909;color:#e9e3d8;font-family:"DM Mono",monospace;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.025) 48%,transparent 49%),linear-gradient(170deg,transparent 0%,rgba(255,255,255,.018) 65%,transparent 66%);z-index:0}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.08) .6px,transparent .7px);background-size:5px 5px;opacity:.12;z-index:1}
+.page{position:relative;min-height:100vh;overflow:hidden}
+.header{position:absolute;top:28px;left:4%;right:4%;display:flex;justify-content:space-between;align-items:flex-start;z-index:10}
+.logo{color:#e9e3d8;text-decoration:none;letter-spacing:6px;font-size:14px}
+.logo span{display:block;margin-top:7px;font-size:8px;letter-spacing:4px;color:#66615b}
+.nav{display:flex;gap:38px}
+.nav a{color:#77716a;text-decoration:none;font-size:10px;letter-spacing:4px;transition:.3s}
+.nav a:hover{color:#e9e3d8}
+.side-text{position:absolute;left:3.5%;top:40%;writing-mode:vertical-rl;font-size:8px;letter-spacing:4px;color:#4f4a45;z-index:4}
+.red-mark{position:absolute;color:#9c1111;font-family:Arial,sans-serif;font-size:32px;z-index:4}
+.mark-one{top:36%;right:17%}
+.mark-two{bottom:19%;left:12%;font-size:42px;transform:rotate(-12deg)}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 30px 70px;z-index:3}
+.eyebrow{margin-bottom:28px;color:#716b64;font-size:10px;letter-spacing:8px;text-transform:uppercase}
+.name{position:relative;font-family:"Playfair Display",Georgia,serif;font-size:clamp(90px,13vw,220px);font-weight:500;line-height:.78;letter-spacing:-8px;color:#eee8dd;white-space:nowrap}
+.name::after{content:"+";position:absolute;right:-55px;top:12%;font-family:Arial,sans-serif;font-size:30px;color:#9c1111}
+.chinese{margin-top:32px;display:inline-block;padding:10px 42px 12px;background:#e7e1d6;color:#111;font-family:Georgia,serif;font-size:clamp(22px,2.5vw,36px);letter-spacing:12px;transform:rotate(-1.5deg);box-shadow:8px 7px 0 rgba(255,255,255,.05)}
+.line{width:120px;height:1px;background:#5c554d;margin:32px auto 26px}
+.quote{font-family:"Playfair Display",Georgia,serif;font-size:clamp(17px,1.5vw,23px);font-style:italic;line-height:1.15;color:#d8d1c6;max-width:900px}
+.quote .red{color:#9c1111}
+.description{margin-top:30px;max-width:760px;font-size:9px;line-height:2.2;letter-spacing:2px;color:#625d56;text-transform:uppercase}
+.enter{margin-top:38px;display:inline-flex;align-items:center;justify-content:center;width:145px;height:52px;border:1px solid #4f4a44;color:#d9d2c7;text-decoration:none;font-size:10px;letter-spacing:7px;transition:.35s}
+.enter:hover{background:#e9e3d8;color:#111;border-color:#e9e3d8}
+.footer{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:#555049;font-size:9px;letter-spacing:6px;white-space:nowrap;z-index:5}
+.background-word{position:absolute;left:-4%;bottom:-9%;font-family:"Playfair Display",Georgia,serif;font-size:clamp(180px,27vw,500px);line-height:.8;color:rgba(255,255,255,.025);letter-spacing:-20px;user-select:none;z-index:2}
+@media(max-width:800px){.header{top:22px;left:6%;right:6%}.logo{font-size:11px;letter-spacing:4px}.nav{gap:15px}.nav a{font-size:8px;letter-spacing:2px}.hero{padding-top:150px}.name{white-space:normal;font-size:20vw;letter-spacing:-5px}.name::after{right:-20px;font-size:20px}.chinese{font-size:20px;padding:8px 25px;letter-spacing:7px}.quote{font-size:16px}.description{font-size:7px;max-width:90%}.side-text{display:none}.footer{font-size:7px;letter-spacing:3px}}
+</style>
+</head>
+<body>
+<div class="page">
+<header class="header">
+<a href="index.html" class="logo">MEILI BAI<span>SILENT ENGINE</span></a>
+<nav class="nav"><a href="index.html">HOME</a><a href="character.html">CHARACTER</a><a href="story.html">STORY</a></nav>
+</header>
+<div class="side-text">PERSONAL OOC ARCHIVE / MEILI BAI / 1999 — 2026</div>
+<div class="red-mark mark-one">×</div>
+<div class="red-mark mark-two">//</div>
+<main class="hero">
+<div class="eyebrow">CHARACTER STORY / OOC</div>
+<h1 class="name">MEILI BAI</h1>
+<div class="chinese">白梅丽</div>
+<div class="line"></div>
+<div class="quote">She doesn't need <span class="red">saving.</span><br>She just doesn't always know how to save <span class="red">herself.</span></div>
+<p class="description">A personal OOC record of Meili Bai's character story — documenting her growth, choices,<br>and the direction her story takes over time.</p>
+<a href="character.html" class="enter">ENTER</a>
+</main>
+<div class="background-word">MEILI</div>
+<div class="footer">LOS SANTOS, SA &nbsp; / &nbsp; 2026</div>
+</div>
+</body>
+</html>
