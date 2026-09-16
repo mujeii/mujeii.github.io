@@ -349,10 +349,10 @@ nav {
     position: relative;
     width: 100%;
 
-    /* 1. ปรับสัดส่วนกรอบให้ยืดสูงขึ้น (จาก 3/4 เป็น 2/3) */
-    aspect-ratio: 2 / 3;
+    /* สัดส่วนกรอบรูปตามเดิมของคุณ */
+    aspect-ratio: 3 / 4; 
 
-    overflow: hidden;
+    overflow: hidden; /* ล็อคไม่ให้ส่วนภาพที่ล้นกรอบโผล่ออกมา */
     border: 1px solid #333;
     transform: rotate(3deg);
     background: #111;
@@ -360,14 +360,15 @@ nav {
 }
 
 .photo img {
-    width: 100%;
-    height: 100%;
+    position: absolute; /* เปลี่ยนเป็น absolute เพื่อให้กำหนดตำแหน่งด้วย top/left ได้อิสระ */
 
-    /* 2. เปลี่ยนเป็น contain เพื่อให้เห็นรูปครบทั้งแนวตั้งโดยไม่โดน Crop */
-    object-fit: contain;
+    /* 1. สเกลขยายภาพ (เพื่อดึงส่วนล่างขยับขึ้นมา) */
+    width: 110%; 
+    height: auto;
 
-    /* 3. ดึงรูปชิดขอบบนสุด */
-    object-position: center top;
+    /* 2. ปรับตำแหน่งภาพอิสระด้วยตัวเอง */
+    top: -15px;  /* เลื่อนภาพ ขึ้น(-)/ลง(+) : ปรับค่าติดลบเพื่อให้หัวชิดขอบบน */
+    left: -5%;   /* จัดตำแหน่งซ้าย-ขวา ให้อยู่กึ่งกลางพอดี */
 
     filter:
         grayscale(100%)
