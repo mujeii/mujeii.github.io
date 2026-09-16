@@ -259,18 +259,18 @@ nav {
     margin-left: 90px;
 }
 
-/* Chinese — REDUCED BY 20% & ROTATED MORE LEFT */
+/* Chinese — SMALLER SCALE & POSITIONED BASED ON DRAWING */
 
 .tape-label-container {
     position: relative;
     display: inline-block;
-    margin-top: -65px;
-    margin-left: 330px;
-    padding: 10px 12px;
+    margin-top: -15px; /* ดึงต่ำลงมาขนานขอบล่างของ BAI */
+    margin-left: 390px; /* ขยับไปทางขวาชิดโซนกากบาทแดง */
+    padding: 8px 10px;
 
-    /* ย่อขนาดลง 20% (scale 0.8) และเอียงซ้ายเพิ่มขึ้นเป็น -7deg */
-    transform: rotate(-7deg) scale(0.8);
-    transform-origin: center center;
+    /* ย่อขนาดลงอีกเป็น scale(0.65) และปรับเอียงเล็กน้อย -2deg */
+    transform: rotate(-2deg) scale(0.65);
+    transform-origin: left center;
 
     z-index: 20;
 }
@@ -282,19 +282,19 @@ nav {
         linear-gradient(245deg, rgba(0,0,0,0.15) 0%, transparent 30%),
         radial-gradient(circle at 70% 30%, rgba(255,255,255,0.8) 0%, rgba(0,0,0,0.08) 100%);
     color: #0d0d0d;
-    padding: 16px 65px;
+    padding: 12px 45px;
     border-radius: 2px;
     box-shadow: 
-        4px 8px 18px rgba(0, 0, 0, 0.65),
-        inset 0 0 10px rgba(0, 0, 0, 0.05);
+        4px 6px 15px rgba(0, 0, 0, 0.65),
+        inset 0 0 8px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .chinese-name {
     font-family: 'Microsoft YaHei', 'PingFang SC', 'SimHei', Arial, sans-serif;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     font-weight: 700;
-    letter-spacing: 16px;
+    letter-spacing: 12px;
     display: block;
     white-space: nowrap;
     line-height: 1;
@@ -311,8 +311,8 @@ nav {
 }
 
 .tape-left {
-    width: 20px;
-    height: 48px;
+    width: 18px;
+    height: 42px;
     left: 2px;
     top: 50%;
     transform: translateY(-50%) rotate(3deg);
@@ -321,8 +321,8 @@ nav {
 }
 
 .tape-right {
-    width: 20px;
-    height: 48px;
+    width: 18px;
+    height: 42px;
     right: 2px;
     top: 50%;
     transform: translateY(-50%) rotate(-3deg);
@@ -848,9 +848,9 @@ footer {
     }
 
     .tape-label-container {
-        margin-left: 40px;
-        margin-top: -20px;
-        transform: rotate(-7deg) scale(0.65);
+        margin-left: 50px;
+        margin-top: 0px;
+        transform: rotate(-2deg) scale(0.55);
     }
 
     .photo-wrap {
@@ -982,7 +982,7 @@ footer {
         </h1>
 
 
-        <!-- ป้ายชื่อกระดาษยับพร้อมเทปกาวใส (ย่อลง 20% + เอียงซ้ายเพิ่มขึ้น) -->
+        <!-- ป้ายชื่อกระดาษยับพร้อมเทปกาวใส (ปรับย่อเล็ก + ขยับตำแหน่งตามรูปวาด) -->
         <div class="tape-label-container">
             <div class="scotct-tape tape-left"></div>
             <div class="scotct-tape tape-right"></div>
