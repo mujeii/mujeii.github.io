@@ -259,34 +259,81 @@ nav {
     margin-left: 90px;
 }
 
-/* Chinese — FIXED POSITION */
+/* Chinese — CRUMPLED PAPER WITH SCOTCH TAPE */
 
-.chinese-label {
+.tape-label-container {
     position: relative;
-
     display: inline-block;
-
-    margin-top: 40px;
+    margin-top: 35px;
     margin-left: 105px;
-
-    padding: 9px 25px;
-
-    background: #ddd;
-
-    color: #111;
-
-    font-family: Georgia, serif;
-
-    font-size: 28px;
-
-    letter-spacing: 12px;
-
-    transform: rotate(-2deg);
-
-    box-shadow:
-        7px 7px 0 rgba(255,255,255,.05);
-
+    padding: 10px 15px;
+    transform: rotate(-6deg);
     z-index: 20;
+}
+
+.crumpled-paper-tag {
+    background-color: #e3dfd5;
+    background-image: 
+        linear-gradient(115deg, rgba(255,255,255,0.7) 0%, transparent 40%),
+        linear-gradient(245deg, rgba(0,0,0,0.15) 0%, transparent 30%),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,0.8) 0%, rgba(0,0,0,0.08) 100%);
+    color: #0d0d0d;
+    padding: 10px 40px;
+    border-radius: 2px;
+    box-shadow: 
+        3px 5px 12px rgba(0, 0, 0, 0.6),
+        inset 0 0 10px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.chinese-name {
+    font-family: 'Kaiti', 'STKaiti', 'Noto Serif SC', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 12px;
+    display: block;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+.scotct-tape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(1.5px);
+    z-index: 5;
+    pointer-events: none;
+}
+
+.tape-left {
+    width: 28px;
+    height: 55px;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%) rotate(4deg);
+    border-top: 2px dashed rgba(255,255,255,0.6);
+    border-bottom: 2px dashed rgba(255,255,255,0.6);
+}
+
+.tape-right {
+    width: 28px;
+    height: 55px;
+    right: 3px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-3deg);
+    border-top: 2px dashed rgba(255,255,255,0.6);
+    border-bottom: 2px dashed rgba(255,255,255,0.6);
+}
+
+.tape-top-right {
+    width: 45px;
+    height: 22px;
+    right: 25px;
+    top: -2px;
+    transform: rotate(-12deg);
+    border-left: 2px dashed rgba(255,255,255,0.6);
+    border-right: 2px dashed rgba(255,255,255,0.6);
 }
 
 /* =========================
@@ -806,12 +853,10 @@ footer {
         margin-left: 35px;
     }
 
-    .chinese-label {
-        margin-left: 40px;
-        margin-top: 30px;
-
-        font-size: 20px;
-        letter-spacing: 7px;
+    .tape-label-container {
+        margin-left: 30px;
+        margin-top: 25px;
+        transform: rotate(-6deg) scale(0.85);
     }
 
     .photo-wrap {
@@ -943,10 +988,15 @@ footer {
         </h1>
 
 
-        <div class="chinese-label">
+        <!-- ป้ายชื่อกระดาษยับพร้อมเทปกาวใส -->
+        <div class="tape-label-container">
+            <div class="scotct-tape tape-left"></div>
+            <div class="scotct-tape tape-top-right"></div>
+            <div class="scotct-tape tape-right"></div>
 
-            白梅丽
-
+            <div class="crumpled-paper-tag">
+                <span class="chinese-name">白梅丽</span>
+            </div>
         </div>
 
     </div>
