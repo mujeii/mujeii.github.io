@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="th">
 
 <head>
@@ -260,15 +259,16 @@ nav {
     margin-left: 90px;
 }
 
-/* Chinese — TAPE LABEL */
+/* Chinese — SMALLER SCALE & POSITIONED BASED ON DRAWING */
 
 .tape-label-container {
     position: relative;
     display: inline-block;
-    margin-top: -15px;
-    margin-left: 390px;
+    margin-top: -15px; /* ดึงต่ำลงมาขนานขอบล่างของ BAI */
+    margin-left: 390px; /* ขยับไปทางขวาชิดโซนกากบาทแดง */
     padding: 8px 10px;
 
+    /* ย่อขนาดลงอีกเป็น scale(0.65) และปรับเอียงเล็กน้อย -2deg */
     transform: rotate(-2deg) scale(0.65);
     transform-origin: left center;
 
@@ -379,7 +379,7 @@ nav {
         brightness(82%);
 }
 
-/* tape on photo */
+/* tape */
 
 .tape {
     position: absolute;
@@ -398,7 +398,7 @@ nav {
 }
 
 /* =========================
-   PHOTO NOTE (กระดาษโน้ต + เทปแปะบนอันเดียว)
+   PHOTO NOTE
 ========================= */
 
 .photo-note {
@@ -407,60 +407,27 @@ nav {
     right: -90px;
     bottom: 15px;
 
-    width: 175px;
+    width: 160px;
 
-    padding: 22px 20px 18px;
+    padding: 18px;
 
     background: #e4dfd5;
-    background-image: 
-        linear-gradient(135deg, rgba(255,255,255,0.4) 0%, transparent 60%),
-        radial-gradient(circle at 50% 50%, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.08) 100%);
 
     color: #111;
 
-    transform: rotate(-3deg);
+    transform: rotate(-5deg);
 
     font-family: "Courier New", monospace;
 
     font-size: 9px;
 
-    line-height: 2;
-
-    box-shadow: 
-        4px 8px 18px rgba(0, 0, 0, 0.5),
-        inset 0 0 10px rgba(0, 0, 0, 0.05);
-
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    line-height: 1.8;
 
     z-index: 20;
 }
 
-/* เทปใสแปะตรงกลางขอบบน */
-.photo-note::before {
-    content: "";
-    position: absolute;
-
-    top: -10px;
-    left: 50%;
-    transform: translateX(-50%) rotate(-2deg);
-
-    width: 55px;
-    height: 22px;
-
-    background: rgba(255, 255, 255, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(1.5px);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
-    border-left: 2px dashed rgba(255, 255, 255, 0.6);
-    border-right: 2px dashed rgba(255, 255, 255, 0.6);
-
-    z-index: 25;
-}
-
 .photo-note strong {
     font-size: 11px;
-    letter-spacing: 1px;
 }
 
 /* =========================
@@ -946,10 +913,11 @@ footer {
 }
 
 </style>
-
 </head>
 
+
 <body>
+
 
 <!-- =========================
      NAV
@@ -957,22 +925,23 @@ footer {
 
 <nav>
 
-<a href="index.html" class="logo">
-    MEILI BAI
-    <span>SILENT ENGINE</span>
-</a>
+    <a href="index.html" class="logo">
+        MEILI BAI
+        <span>SILENT ENGINE</span>
+    </a>
 
-<div class="nav-links">
+    <div class="nav-links">
 
-    <a href="index.html">HOME</a>
+        <a href="index.html">HOME</a>
 
-    <a href="character.html">CHARACTER</a>
+        <a href="character.html">CHARACTER</a>
 
-    <a href="story.html">STORY</a>
+        <a href="story.html">STORY</a>
 
-</div>
+    </div>
 
 </nav>
+
 
 <!-- =========================
      HERO
@@ -982,125 +951,127 @@ footer {
 
 <div class="hero-inner">
 
-<div class="meta">
 
-    07 / 06 / 1999
-    <br>
+    <div class="meta">
 
-    <strong>HONG KONG</strong>
+        07 / 06 / 1999
+        <br>
 
-</div>
+        <strong>HONG KONG</strong>
 
-
-<div class="side-index">
-
-    SILENT ENGINE / CHARACTER ARCHIVE / OOC
-
-</div>
+    </div>
 
 
-<!-- NAME -->
+    <div class="side-index">
 
-<div class="name">
+        SILENT ENGINE / CHARACTER ARCHIVE / OOC
 
-    <h1>
-
-        MEILI
-
-        <span>BAI</span>
-
-    </h1>
+    </div>
 
 
-    <!-- ป้ายชื่อกระดาษยับพร้อมเทปกาวใส -->
-    <div class="tape-label-container">
-        <div class="scotct-tape tape-left"></div>
-        <div class="scotct-tape tape-right"></div>
+    <!-- NAME -->
 
-        <div class="crumpled-paper-tag">
-            <span class="chinese-name">白梅丽</span>
+    <div class="name">
+
+        <h1>
+
+            MEILI
+
+            <span>BAI</span>
+
+        </h1>
+
+
+        <!-- ป้ายชื่อกระดาษยับพร้อมเทปกาวใส (ปรับย่อเล็ก + ขยับตำแหน่งตามรูปวาด) -->
+        <div class="tape-label-container">
+            <div class="scotct-tape tape-left"></div>
+            <div class="scotct-tape tape-right"></div>
+
+            <div class="crumpled-paper-tag">
+                <span class="chinese-name">白梅丽</span>
+            </div>
         </div>
-    </div>
-
-</div>
-
-
-<!-- PHOTO -->
-
-<div class="photo-wrap">
-
-    <div class="photo">
-
-        <img
-            src="images/meili-main.jpg"
-            alt="Meili Bai"
-        >
-
-        <div class="tape"></div>
 
     </div>
 
 
-    <!-- PHOTO NOTE (มีเทปใสแปะตรงกลางขอบบนอันเดียว) -->
-    <div class="photo-note">
+    <!-- PHOTO -->
 
-        <strong>MEILI BAI</strong>
+    <div class="photo-wrap">
 
-        <br>
+        <div class="photo">
 
-        CHINESE
+            <img
+                src="images/meili-main.jpg"
+                alt="Meili Bai"
+            >
 
-        <br>
+            <div class="tape"></div>
 
-        165 CM
+        </div>
 
-        <br>
 
-        55 KG
+        <div class="photo-note">
 
-        <br>
+            <strong>MEILI BAI</strong>
 
-        27 YEARS
+            <br>
 
-        <br>
+            CHINESE
 
-        HONG KONG
+            <br>
+
+            165 CM
+
+            <br>
+
+            55 KG
+
+            <br>
+
+            27 YEARS
+
+            <br>
+
+            HONG KONG
+
+        </div>
 
     </div>
 
-</div>
+
+    <!-- QUOTE -->
+
+    <div class="quote">
+
+        She doesn't need
+        <span class="red">saving.</span>
+        
+        <br>
+        
+        She just doesn't always know
+        how to save
+        <span class="red">herself.</span>
+
+    </div>
 
 
-<!-- QUOTE -->
+    <div class="scribble one">
+        ×
+    </div>
 
-<div class="quote">
-
-    She doesn't need
-    <span class="red">saving.</span>
-    
-    <br>
-    
-    She just doesn't always know
-    how to save
-    <span class="red">herself.</span>
-
-</div>
+    <div class="scribble two">
+        //
+    </div>
 
 
-<div class="scribble one">
-    ×
-</div>
+    <div class="barcode"></div>
 
-<div class="scribble two">
-    //
-</div>
-
-
-<div class="barcode"></div>
 
 </div>
 
 </header>
+
 
 <!-- =========================
      PROLOGUE
@@ -1108,168 +1079,170 @@ footer {
 
 <section class="section">
 
-<div class="section-number">
-    01 / PROLOGUE
-</div>
+
+    <div class="section-number">
+        01 / PROLOGUE
+    </div>
 
 
-<h2 class="section-title">
+    <h2 class="section-title">
 
-    SILENT<br>
-    BETWEEN<br>
-    THE LINES
+        SILENT<br>
+        BETWEEN<br>
+        THE LINES
 
-</h2>
-
-
-<div class="prologue">
+    </h2>
 
 
-    <aside class="profile-info">
-
-        SUBJECT
-
-        <strong>
-            MEILI BAI
-        </strong>
-
-        <br>
-
-        ALIAS
-
-        <strong>
-            อาเหมย
-        </strong>
-
-        <br>
-
-        BORN
-
-        <strong>
-            07 / 06 / 1999
-        </strong>
-
-        <br>
-
-        ORIGIN
-
-        <strong>
-            HONG KONG
-        </strong>
-
-        <br>
-
-        NATIONALITY
-
-        <strong>
-            CHINESE
-        </strong>
-
-        <br>
-
-        HEIGHT
-
-        <strong>
-            165 CM
-        </strong>
-
-        <br>
-
-        WEIGHT
-
-        <strong>
-            55 KG
-        </strong>
-
-    </aside>
+    <div class="prologue">
 
 
-    <div class="prologue-text">
+        <aside class="profile-info">
 
+            SUBJECT
 
-        <p>
-            อาเหมย หญิงสาวเชื้อสายจีนจาก Hong Kong
-            อายุ 27 ปี รูปร่างสมส่วนค่อนไปทางผอมเพรียว
-            ไหล่ไม่กว้างแต่ท่าทางมั่นคง
-            จากการเติบโตมากับงานช่างกลางแจ้ง
-        </p>
-
-
-        <p>
-            ผิวขาวเหลืองอมแทนเล็กน้อย
-            ผมสั้นสีน้ำตาลเข้ม
-            ดวงตาสีน้ำตาลอ่อนที่มองตรงอย่างนิ่งสงบ
-            ทำให้เธอดูสุขุมและเข้าถึงยากตั้งแต่แรกพบ
-            ใบหน้าคม โหนกแก้มชัด ริมฝีปากบาง
-            และไม่ค่อยแสดงอารมณ์ผ่านสีหน้า
-        </p>
-
-
-        <p>
-            เธอไม่ใช่คนพูดมาก
-            และไม่ใช่คนที่เปิดใจง่าย
-        </p>
-
-
-        <p>
-            เบื้องหลังความเงียบคือคนที่เติบโต
-            มากับเสียงเครื่องยนต์
-            อาเหมยหลงใหลรถมอเตอร์ไซค์มาตั้งแต่วัยเด็ก
-            สำหรับเธอ มันไม่ใช่เพียงพาหนะ
-            <strong>แต่มันคืออิสระ</strong>
-        </p>
-
-
-        <p>
-            ทุกครั้งที่บิดคันเร่ง
-            และปล่อยให้ถนนทอดยาวอยู่ตรงหน้า
-            เธอรู้สึกว่าทิ้งอดีต ความคาดหวัง
-            และแรงกดดันทั้งหมดไว้เบื้องหลัง
-            เหลือเพียงตัวตนที่แท้จริงของเธอเท่านั้น
-        </p>
-
-
-        <p>
-            รอยสักบนผิวหนังไม่ใช่เพียงลวดลาย
-            แต่เป็นบันทึกชีวิตที่เธอเลือกเก็บไว้กับตัวเอง
-            แต่ละเส้นหมึกมีความหมาย
-        </p>
-
-
-        <p>
-            บางลายแทนความทรงจำ
-            บางลายแทนการเริ่มต้นใหม่
-            และทุกลายเตือนให้เธอจำ
-            เส้นทางที่เคยเดินผ่านมา
-        </p>
-
-
-        <p>
-            อาเหมยไม่ต้องการเป็นจุดสนใจ
-            ไม่ต้องการชื่อเสียงและไม่ต้องการอำนาจ
-            เธอเพียงต้องการพื้นที่เล็ก ๆ บนโลกใบนี้
-            ที่เธอสามารถยืนอยู่ได้ด้วยตัวเองอย่างมั่นคง
-        </p>
-
-
-        <p>
-            และในเมืองที่ไม่มีใครรู้จักเธอ
-        </p>
-
-
-        <p>
             <strong>
-                เรื่องราวของ Meili Bai
-                กำลังเริ่มต้นขึ้นอย่างเงียบงัน
+                MEILI BAI
             </strong>
-        </p>
 
+            <br>
+
+            ALIAS
+
+            <strong>
+                อาเหมย
+            </strong>
+
+            <br>
+
+            BORN
+
+            <strong>
+                07 / 06 / 1999
+            </strong>
+
+            <br>
+
+            ORIGIN
+
+            <strong>
+                HONG KONG
+            </strong>
+
+            <br>
+
+            NATIONALITY
+
+            <strong>
+                CHINESE
+            </strong>
+
+            <br>
+
+            HEIGHT
+
+            <strong>
+                165 CM
+            </strong>
+
+            <br>
+
+            WEIGHT
+
+            <strong>
+                55 KG
+            </strong>
+
+        </aside>
+
+
+        <div class="prologue-text">
+
+
+            <p>
+                อาเหมย หญิงสาวเชื้อสายจีนจาก Hong Kong
+                อายุ 27 ปี รูปร่างสมส่วนค่อนไปทางผอมเพรียว
+                ไหล่ไม่กว้างแต่ท่าทางมั่นคง
+                จากการเติบโตมากับงานช่างกลางแจ้ง
+            </p>
+
+
+            <p>
+                ผิวขาวเหลืองอมแทนเล็กน้อย
+                ผมสั้นสีน้ำตาลเข้ม
+                ดวงตาสีน้ำตาลอ่อนที่มองตรงอย่างนิ่งสงบ
+                ทำให้เธอดูสุขุมและเข้าถึงยากตั้งแต่แรกพบ
+                ใบหน้าคม โหนกแก้มชัด ริมฝีปากบาง
+                และไม่ค่อยแสดงอารมณ์ผ่านสีหน้า
+            </p>
+
+
+            <p>
+                เธอไม่ใช่คนพูดมาก
+                และไม่ใช่คนที่เปิดใจง่าย
+            </p>
+
+
+            <p>
+                เบื้องหลังความเงียบคือคนที่เติบโต
+                มากับเสียงเครื่องยนต์
+                อาเหมยหลงใหลรถมอเตอร์ไซค์มาตั้งแต่วัยเด็ก
+                สำหรับเธอ มันไม่ใช่เพียงพาหนะ
+                <strong>แต่มันคืออิสระ</strong>
+            </p>
+
+
+            <p>
+                ทุกครั้งที่บิดคันเร่ง
+                และปล่อยให้ถนนทอดยาวอยู่ตรงหน้า
+                เธอรู้สึกว่าทิ้งอดีต ความคาดหวัง
+                และแรงกดดันทั้งหมดไว้เบื้องหลัง
+                เหลือเพียงตัวตนที่แท้จริงของเธอเท่านั้น
+            </p>
+
+
+            <p>
+                รอยสักบนผิวหนังไม่ใช่เพียงลวดลาย
+                แต่เป็นบันทึกชีวิตที่เธอเลือกเก็บไว้กับตัวเอง
+                แต่ละเส้นหมึกมีความหมาย
+            </p>
+
+
+            <p>
+                บางลายแทนความทรงจำ
+                บางลายแทนการเริ่มต้นใหม่
+                และทุกลายเตือนให้เธอจำ
+                เส้นทางที่เคยเดินผ่านมา
+            </p>
+
+
+            <p>
+                อาเหมยไม่ต้องการเป็นจุดสนใจ
+                ไม่ต้องการชื่อเสียงและไม่ต้องการอำนาจ
+                เธอเพียงต้องการพื้นที่เล็ก ๆ บนโลกใบนี้
+                ที่เธอสามารถยืนอยู่ได้ด้วยตัวเองอย่างมั่นคง
+            </p>
+
+
+            <p>
+                และในเมืองที่ไม่มีใครรู้จักเธอ
+            </p>
+
+
+            <p>
+                <strong>
+                    เรื่องราวของ Meili Bai
+                    กำลังเริ่มต้นขึ้นอย่างเงียบงัน
+                </strong>
+            </p>
+
+
+        </div>
 
     </div>
 
-</div>
-
 </section>
+
 
 <!-- =========================
      IDENTITY
@@ -1277,112 +1250,114 @@ footer {
 
 <section class="section">
 
-<div class="section-number">
-    02 / IDENTITY
-</div>
 
-
-<h2 class="section-title">
-
-    WHO<br>
-    SHE IS
-
-</h2>
-
-
-<div class="info-grid">
-
-
-    <div class="info">
-
-        <small>NAME</small>
-
-        <strong>
-            Meili Bai
-        </strong>
-
+    <div class="section-number">
+        02 / IDENTITY
     </div>
 
 
-    <div class="info">
+    <h2 class="section-title">
 
-        <small>CHINESE NAME</small>
+        WHO<br>
+        SHE IS
 
-        <strong>
-            白梅丽
-        </strong>
+    </h2>
+
+
+    <div class="info-grid">
+
+
+        <div class="info">
+
+            <small>NAME</small>
+
+            <strong>
+                Meili Bai
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>CHINESE NAME</small>
+
+            <strong>
+                白梅丽
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>ALIAS</small>
+
+            <strong>
+                อาเหมย
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>AGE</small>
+
+            <strong>
+                27
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>BORN</small>
+
+            <strong>
+                07 / 06 / 1999
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>ORIGIN</small>
+
+            <strong>
+                Hong Kong
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>HEIGHT</small>
+
+            <strong>
+                165 CM
+            </strong>
+
+        </div>
+
+
+        <div class="info">
+
+            <small>WEIGHT</small>
+
+            <strong>
+                55 KG
+            </strong>
+
+        </div>
 
     </div>
-
-
-    <div class="info">
-
-        <small>ALIAS</small>
-
-        <strong>
-            อาเหมย
-        </strong>
-
-    </div>
-
-
-    <div class="info">
-
-        <small>AGE</small>
-
-        <strong>
-            27
-        </strong>
-
-    </div>
-
-
-    <div class="info">
-
-        <small>BORN</small>
-
-        <strong>
-            07 / 06 / 1999
-        </strong>
-
-    </div>
-
-
-    <div class="info">
-
-        <small>ORIGIN</small>
-
-        <strong>
-            Hong Kong
-        </strong>
-
-    </div>
-
-
-    <div class="info">
-
-        <small>HEIGHT</small>
-
-        <strong>
-            165 CM
-        </strong>
-
-    </div>
-
-
-    <div class="info">
-
-        <small>WEIGHT</small>
-
-        <strong>
-            55 KG
-        </strong>
-
-    </div>
-
-</div>
 
 </section>
+
 
 <!-- =========================
      NOTES
@@ -1390,57 +1365,59 @@ footer {
 
 <section class="section">
 
-<div class="section-number">
-    03 / NOTES
-</div>
 
-
-<div class="notes">
-
-
-    <div class="note-main">
-
-        MOTOR<br>
-        CYCLE
-
+    <div class="section-number">
+        03 / NOTES
     </div>
 
 
-    <div class="note-small">
+    <div class="notes">
 
-        SHE GREW UP AROUND
-        ENGINES.
 
-        <br><br>
+        <div class="note-main">
 
-        SHE FOUND FREEDOM
-        ON THE ROAD.
+            MOTOR<br>
+            CYCLE
 
-        <br><br>
+        </div>
 
-        MEMORY / INK / ROAD
-        / SILENCE
+
+        <div class="note-small">
+
+            SHE GREW UP AROUND
+            ENGINES.
+
+            <br><br>
+
+            SHE FOUND FREEDOM
+            ON THE ROAD.
+
+            <br><br>
+
+            MEMORY / INK / ROAD
+            / SILENCE
+
+        </div>
+
+
+        <div class="note-red">
+
+            FREEDOM
+
+        </div>
+
+
+        <div class="note-bottom">
+
+            NOISE — MEMORY — ROAD — MEILI
+
+        </div>
+
 
     </div>
-
-
-    <div class="note-red">
-
-        FREEDOM
-
-    </div>
-
-
-    <div class="note-bottom">
-
-        NOISE — MEMORY — ROAD — MEILI
-
-    </div>
-
-
-</div>
 
 </section>
+
 
 <!-- =========================
      FINAL
@@ -1448,33 +1425,36 @@ footer {
 
 <section class="section final">
 
-<div>
 
-    <h2>
+    <div>
 
-        SILENT<br>
-        ENGINE
+        <h2>
 
-    </h2>
+            SILENT<br>
+            ENGINE
+
+        </h2>
 
 
-    <p>
+        <p>
 
-        MEILI BAI / 白梅丽
-        <br><br>
-        LOS SANTOS — 2026
+            MEILI BAI / 白梅丽
+            <br><br>
+            LOS SANTOS — 2026
 
-    </p>
+        </p>
 
-</div>
+    </div>
 
 </section>
 
+
 <footer>
 
-MEILI BAI / CHARACTER ARCHIVE / OOC
+    MEILI BAI / CHARACTER ARCHIVE / OOC
 
 </footer>
+
 
 </body>
 </html>
