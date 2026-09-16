@@ -259,14 +259,14 @@ nav {
     margin-left: 90px;
 }
 
-/* Chinese — MOVED UP & RIGHT / LARGER PAPER */
+/* Chinese — MOVED HIGHER & SMALLER TAPE */
 
 .tape-label-container {
     position: relative;
     display: inline-block;
-    margin-top: -35px; /* ขยับขึ้นไปชิด/ซ้อน BAI */
-    margin-left: 360px; /* ขยับไปทางขวาตามลูกศร */
-    padding: 10px 18px;
+    margin-top: -85px; /* ดึงขยับขึ้นสูงอีก */
+    margin-left: 360px;
+    padding: 10px 12px;
     transform: rotate(-2deg);
     z-index: 20;
 }
@@ -278,7 +278,7 @@ nav {
         linear-gradient(245deg, rgba(0,0,0,0.15) 0%, transparent 30%),
         radial-gradient(circle at 70% 30%, rgba(255,255,255,0.8) 0%, rgba(0,0,0,0.08) 100%);
     color: #0d0d0d;
-    padding: 16px 65px; /* ขยายขนาดแผ่นกระดาษให้ใหญ่ขึ้น */
+    padding: 16px 65px;
     border-radius: 2px;
     box-shadow: 
         4px 8px 18px rgba(0, 0, 0, 0.65),
@@ -288,7 +288,7 @@ nav {
 
 .chinese-name {
     font-family: 'Microsoft YaHei', 'PingFang SC', 'SimHei', Arial, sans-serif;
-    font-size: 2.8rem; /* ขยายขนาดฟอนต์ให้เด่นขึ้น */
+    font-size: 2.8rem;
     font-weight: 700;
     letter-spacing: 16px;
     display: block;
@@ -296,34 +296,35 @@ nav {
     line-height: 1;
 }
 
+/* เทปกาวใสเล็กลง */
 .scotct-tape {
     position: absolute;
-    background: rgba(255, 255, 255, 0.35);
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.32);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(1.5px);
     z-index: 5;
     pointer-events: none;
 }
 
 .tape-left {
-    width: 32px;
-    height: 65px;
+    width: 20px; /* ปรับขนาดเทปให้เล็กลง */
+    height: 48px;
     left: 2px;
     top: 50%;
     transform: translateY(-50%) rotate(3deg);
-    border-top: 2px dashed rgba(255,255,255,0.6);
-    border-bottom: 2px dashed rgba(255,255,255,0.6);
+    border-top: 1.5px dashed rgba(255,255,255,0.6);
+    border-bottom: 1.5px dashed rgba(255,255,255,0.6);
 }
 
 .tape-right {
-    width: 32px;
-    height: 65px;
+    width: 20px; /* ปรับขนาดเทปให้เล็กลง */
+    height: 48px;
     right: 2px;
     top: 50%;
     transform: translateY(-50%) rotate(-3deg);
-    border-top: 2px dashed rgba(255,255,255,0.6);
-    border-bottom: 2px dashed rgba(255,255,255,0.6);
+    border-top: 1.5px dashed rgba(255,255,255,0.6);
+    border-bottom: 1.5px dashed rgba(255,255,255,0.6);
 }
 
 /* =========================
@@ -845,7 +846,7 @@ footer {
 
     .tape-label-container {
         margin-left: 60px;
-        margin-top: 0px;
+        margin-top: -30px;
         transform: rotate(-2deg) scale(0.75);
     }
 
@@ -978,7 +979,7 @@ footer {
         </h1>
 
 
-        <!-- ป้ายชื่อกระดาษยับพร้อมเทปกาวใส (ปรับขยับขึ้น, ไปทางขวา และขยายใหญ่ขึ้น) -->
+        <!-- ป้ายชื่อกระดาษยับพร้อมเทปกาวใส (ปรับดึงขึ้น + ย่อเทปเล็กลง) -->
         <div class="tape-label-container">
             <div class="scotct-tape tape-left"></div>
             <div class="scotct-tape tape-right"></div>
